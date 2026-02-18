@@ -16,6 +16,15 @@
     box-shadow: 0 0 10px rgba(14, 165, 233, 0.2);
 }
 
+@media (max-width: 768px) {
+    .terminal-toggle {
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
 .terminal-toggle:hover {
     background: var(--accent-primary);
     color: #000;
