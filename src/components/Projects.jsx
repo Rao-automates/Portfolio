@@ -59,36 +59,43 @@ const Projects = () => {
                             ))}
                         </div>
                         <div className="project-links">
-                            <a
-                                href={project.links.github}
-                                className="project-link"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={(e) => {
-                                    if (project.links.github === '#') {
-                                        e.preventDefault();
-                                        // You'd need to import addToast or use context here, but for now let's just ensure it's clickable.
-                                        // Since we can't easily use the hook inside the map without refactoring, we'll assume the z-index fix works.
-                                        alert("Repository is private or not linked yet!");
-                                    }
-                                }}
-                            >
-                                <Github size={18} /> Code
-                            </a>
-                            <a
-                                href={project.links.live}
-                                className="project-link"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={(e) => {
-                                    if (project.links.live === '#') {
-                                        e.preventDefault();
-                                        alert("Live demo coming soon!");
-                                    }
-                                }}
-                            >
-                                <ExternalLink size={18} /> Live Demo
-                            </a>
+                            {project.links.github === '#' ? (
+                                <span
+                                    className="project-link"
+                                    style={{ cursor: 'not-allowed', opacity: 0.7 }}
+                                    onClick={() => alert("Repository is private or not linked yet!")}
+                                >
+                                    <Github size={18} /> Code
+                                </span>
+                            ) : (
+                                <a
+                                    href={project.links.github}
+                                    className="project-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <Github size={18} /> Code
+                                </a>
+                            )}
+
+                            {project.links.live === '#' ? (
+                                <span
+                                    className="project-link"
+                                    style={{ cursor: 'not-allowed', opacity: 0.7 }}
+                                    onClick={() => alert("Live demo coming soon!")}
+                                >
+                                    <ExternalLink size={18} /> Live Demo
+                                </span>
+                            ) : (
+                                <a
+                                    href={project.links.live}
+                                    className="project-link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <ExternalLink size={18} /> Live Demo
+                                </a>
+                            )}
                         </div>
                     </motion.div>
                 ))}
