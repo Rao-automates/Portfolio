@@ -1,5 +1,6 @@
 .projects-container {
     padding: 120px 5%;
+    background: var(--bg-secondary);
 }
 
 .projects-grid {
@@ -11,6 +12,8 @@
 }
 
 .project-card {
+    --mouse-x: 50%;
+    --mouse-y: 50%;
     background: var(--bg-card);
     border: 1px solid var(--border-card);
     border-radius: var(--radius-lg);
@@ -22,38 +25,43 @@
     flex-direction: column;
 }
 
-/* Gradient top accent */
-.project-card::before {
+/* Cursor-following spotlight */
+.project-card.spotlight-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--gradient-accent);
+    width: 400px;
+    height: 400px;
+    left: var(--mouse-x);
+    top: var(--mouse-y);
+    background: radial-gradient(circle, rgba(167, 139, 250, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
     opacity: 0;
-    transition: opacity var(--transition-smooth);
+    transition: opacity 0.4s;
+    z-index: 0;
 }
 
-.project-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(167, 139, 250, 0.15);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    background: var(--bg-card-hover);
-}
-
-.project-card:hover::before {
+.project-card:hover.spotlight-card::before {
     opacity: 1;
 }
 
+.project-card:hover {
+    border-color: rgba(167, 139, 250, 0.12);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    background: var(--bg-card-hover);
+}
+
 .project-number {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
     color: var(--accent-1);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 1rem;
-    opacity: 0.7;
+    opacity: 0.6;
+    position: relative;
+    z-index: 1;
 }
 
 .project-title {
@@ -61,6 +69,8 @@
     margin-bottom: 0.8rem;
     font-weight: 700;
     line-height: 1.3;
+    position: relative;
+    z-index: 1;
 }
 
 .project-desc {
@@ -69,6 +79,8 @@
     margin-bottom: 1.5rem;
     flex-grow: 1;
     line-height: 1.7;
+    position: relative;
+    z-index: 1;
 }
 
 .project-tech {
@@ -76,16 +88,24 @@
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .tech-tag {
     font-size: 0.75rem;
     padding: 0.3rem 0.8rem;
     border-radius: var(--radius-xl);
-    background: rgba(167, 139, 250, 0.08);
+    background: rgba(167, 139, 250, 0.06);
     color: var(--accent-1);
-    border: 1px solid rgba(167, 139, 250, 0.12);
+    border: 1px solid rgba(167, 139, 250, 0.1);
     font-weight: 500;
+    transition: all 0.3s;
+}
+
+.tech-tag:hover {
+    background: rgba(167, 139, 250, 0.15);
+    border-color: rgba(167, 139, 250, 0.3);
 }
 
 .project-links {
@@ -93,6 +113,8 @@
     gap: 1.5rem;
     border-top: 1px solid var(--border-subtle);
     padding-top: 1.2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .project-link {

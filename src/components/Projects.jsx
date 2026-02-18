@@ -1,6 +1,72 @@
 import './Projects.css';
 import { Github, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useRef } from 'react';
+
+const ProjectCard = ({ project, index }) => {
+    const cardRef = useRef(null);
+
+    const handleMouseMove = (e) => {
+        const card = cardRef.current;
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    };
+
+    return (
+        <motion.div
+            ref={cardRef}
+            className="project-card spotlight-card gradient-border"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+            onMouseMove={handleMouseMove}
+            whileHover={{ y: -8 }}
+        >
+            <span className="project-number">Project 0{index + 1}</span>
+            <h3 className="project-title">{project.title}</h3>
+            <p className="project-desc">{project.description}</p>
+            <div className="project-tech">
+                {project.tech.map((tag, i) => (
+                    <motion.span
+                        key={i}
+                        className="tech-tag"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.3 + i * 0.05 }}
+                        viewport={{ once: true }}
+                    >
+                        {tag}
+                    </motion.span>
+                ))}
+            </div>
+            <div className="project-links">
+                {project.links.github === '#' ? (
+                    <span className="project-link" style={{ cursor: 'not-allowed', opacity: 0.4 }}>
+                        <Github size={16} /> Code
+                    </span>
+                ) : (
+                    <a href={project.links.github} className="project-link" target="_blank" rel="noopener noreferrer">
+                        <Github size={16} /> Code
+                    </a>
+                )}
+                {project.links.live === '#' ? (
+                    <span className="project-link" style={{ cursor: 'not-allowed', opacity: 0.4 }}>
+                        <ExternalLink size={16} /> Live Demo
+                    </span>
+                ) : (
+                    <a href={project.links.live} className="project-link" target="_blank" rel="noopener noreferrer">
+                        <ExternalLink size={16} /> Live Demo
+                    </a>
+                )}
+            </div>
+        </motion.div>
+    );
+};
 
 const Projects = () => {
     const projects = [
@@ -55,43 +121,7 @@ const Projects = () => {
 
             <div className="projects-grid">
                 {projects.map((project, index) => (
-                    <motion.div
-                        key={index}
-                        className="project-card"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                    >
-                        <span className="project-number">Project 0{index + 1}</span>
-                        <h3 className="project-title">{project.title}</h3>
-                        <p className="project-desc">{project.description}</p>
-                        <div className="project-tech">
-                            {project.tech.map((tag, i) => (
-                                <span key={i} className="tech-tag">{tag}</span>
-                            ))}
-                        </div>
-                        <div className="project-links">
-                            {project.links.github === '#' ? (
-                                <span className="project-link" style={{ cursor: 'not-allowed', opacity: 0.5 }}>
-                                    <Github size={16} /> Code
-                                </span>
-                            ) : (
-                                <a href={project.links.github} className="project-link" target="_blank" rel="noopener noreferrer">
-                                    <Github size={16} /> Code
-                                </a>
-                            )}
-                            {project.links.live === '#' ? (
-                                <span className="project-link" style={{ cursor: 'not-allowed', opacity: 0.5 }}>
-                                    <ExternalLink size={16} /> Live Demo
-                                </span>
-                            ) : (
-                                <a href={project.links.live} className="project-link" target="_blank" rel="noopener noreferrer">
-                                    <ExternalLink size={16} /> Live Demo
-                                </a>
-                            )}
-                        </div>
-                    </motion.div>
+                    <ProjectCard key={index} project={project} index={index} />
                 ))}
             </div>
         </section>

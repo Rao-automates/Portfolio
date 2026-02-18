@@ -6,7 +6,7 @@
 .about-content {
     display: flex;
     align-items: center;
-    gap: 4rem;
+    gap: 5rem;
     max-width: 1100px;
     width: 100%;
     margin: 0 auto;
@@ -15,6 +15,8 @@
 .about-image-wrapper {
     flex-shrink: 0;
     position: relative;
+    width: 300px;
+    height: 360px;
 }
 
 .about-image {
@@ -22,25 +24,85 @@
     height: 340px;
     object-fit: cover;
     border-radius: var(--radius-lg);
-    filter: grayscale(20%);
-    transition: all var(--transition-smooth);
+    filter: grayscale(20%) contrast(1.05);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     border: 1px solid var(--border-card);
+    position: relative;
+    z-index: 2;
 }
 
 .about-image:hover {
-    filter: grayscale(0%);
-    transform: scale(1.02);
-    box-shadow: 0 20px 60px rgba(167, 139, 250, 0.15);
+    filter: grayscale(0%) contrast(1.1);
+    transform: scale(1.03) rotate(1deg);
+    box-shadow: 0 25px 60px rgba(167, 139, 250, 0.2);
 }
 
 .about-image-glow {
     position: absolute;
-    inset: -20px;
+    inset: -30px;
     background: var(--gradient-accent);
     border-radius: var(--radius-lg);
     opacity: 0.08;
-    filter: blur(40px);
-    z-index: -1;
+    filter: blur(50px);
+    z-index: 0;
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.06;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.12;
+        transform: scale(1.05);
+    }
+}
+
+/* Floating tech badges */
+.floating-badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(12, 12, 12, 0.9);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-xl);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent-1);
+    backdrop-filter: blur(10px);
+    z-index: 3;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: badgeFloat 4s ease-in-out infinite;
+}
+
+.floating-badge:nth-child(3) {
+    animation-delay: -1s;
+}
+
+.floating-badge:nth-child(4) {
+    animation-delay: -2s;
+}
+
+.floating-badge:nth-child(5) {
+    animation-delay: -3s;
+}
+
+@keyframes badgeFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 .about-text {
@@ -69,6 +131,11 @@
     background: var(--bg-card);
     border: 1px solid var(--border-card);
     border-radius: var(--radius-md);
+    transition: all var(--transition-smooth);
+}
+
+.tech-stack:hover {
+    border-color: rgba(167, 139, 250, 0.15);
 }
 
 .tech-title {
@@ -87,11 +154,25 @@
     color: var(--text-secondary);
 }
 
+.tech-icons div {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.tech-icons div:hover {
+    color: var(--accent-1);
+}
+
 @media (max-width: 900px) {
     .about-content {
         flex-direction: column-reverse;
         text-align: center;
-        gap: 2.5rem;
+        gap: 3rem;
+    }
+
+    .about-image-wrapper {
+        width: 240px;
+        height: 300px;
     }
 
     .about-image {
@@ -101,5 +182,9 @@
 
     .tech-icons {
         justify-content: center;
+    }
+
+    .floating-badge {
+        display: none;
     }
 }

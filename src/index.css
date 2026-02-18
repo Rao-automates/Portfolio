@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
 :root {
-  --bg-primary: #0c0c0c;
-  --bg-secondary: #111111;
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0a;
   --bg-card: rgba(255, 255, 255, 0.03);
   --bg-card-hover: rgba(255, 255, 255, 0.06);
 
@@ -11,11 +17,9 @@
   --text-muted: #555555;
 
   --accent-1: #a78bfa;
-  /* Violet */
   --accent-2: #818cf8;
-  /* Indigo */
   --accent-3: #60a5fa;
-  /* Blue */
+  --accent-4: #c084fc;
   --gradient-accent: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
 
   --border-subtle: rgba(255, 255, 255, 0.06);
@@ -111,6 +115,81 @@ button {
   max-width: 550px;
 }
 
+/* Section divider */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-3), transparent);
+  opacity: 0.2;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--gradient-accent);
+  z-index: 9999;
+  transform-origin: left;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+}
+
+/* Animated gradient border utility */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--gradient-angle), var(--accent-1), var(--accent-3), var(--accent-4), var(--accent-1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s;
+  animation: rotateGradient 3s linear infinite;
+}
+
+.gradient-border:hover::after {
+  opacity: 1;
+}
+
+@keyframes rotateGradient {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+/* Spotlight cursor effect */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 0;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -129,7 +208,6 @@ button {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Selection */
 ::selection {
   background: rgba(167, 139, 250, 0.3);
   color: var(--text-primary);

@@ -7,12 +7,14 @@ import Projects from './components/Projects';
 import { Skills, Contact } from './components/Footer';
 import Cursor from './components/Cursor';
 import Terminal from './components/Terminal';
+import ScrollProgress from './components/ScrollProgress';
 import './App.css'
 
 function App() {
   return (
     <ToastProvider>
       <div className="app-container">
+        <ScrollProgress />
         <Cursor />
         <Terminal />
         <Header />
