@@ -1,6 +1,8 @@
 import './Hero.css';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import MagneticButton from './MagneticButton';
+import { useRef } from 'react';
 
 const wordVariants = {
     hidden: { opacity: 0, y: 20, filter: 'blur(10px)' },
@@ -12,9 +14,19 @@ const wordVariants = {
 
 const Hero = () => {
     const descWords = "Specializing in FastAPI, n8n Automation, and RAG Pipelines. Building intelligent workflows and scalable backend solutions.".split(' ');
+    const heroRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: heroRef,
+        offset: ["start start", "end start"]
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
 
     return (
-        <section id="home" className="hero-container">
+        <section id="home" className="hero-container" ref={heroRef}>
             {/* Aurora / Northern Lights effect */}
             <div className="aurora">
                 <div className="aurora-beam aurora-1"></div>
@@ -30,7 +42,7 @@ const Hero = () => {
             {/* Grid pattern */}
             <div className="hero-grid"></div>
 
-            <div className="hero-content">
+            <motion.div className="hero-content" style={{ y, opacity, scale }}>
                 <motion.div
                     className="hero-badge"
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -84,24 +96,16 @@ const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.5, duration: 0.8, type: 'spring' }}
                 >
-                    <motion.a
-                        href="#projects"
-                        className="btn btn-primary"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.98 }}
-                    >
-                        View My Work <ArrowRight size={18} />
-                    </motion.a>
-                    <motion.a
-                        href="#contact"
-                        className="btn btn-secondary"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.98 }}
-                    >
-                        Get in Touch
-                    </motion.a>
+                    <MagneticButton>
+                        <a href="#projects" className="btn btn-primary">
+                            View My Work <ArrowRight size={18} />
+                        </a>
+                    </MagneticButton>
+                    <MagneticButton>
+                        <a href="#contact" className="btn btn-secondary">Get in Touch</a>
+                    </MagneticButton>
                 </motion.div>
-            </div>
+            </motion.div>
         </section>
     );
 };

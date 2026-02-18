@@ -2,6 +2,7 @@ import './Footer.css';
 import { Mail, Linkedin, Github, ExternalLink, Server, Terminal, Monitor, Cpu, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useToast } from './Toast';
+import MagneticButton from './MagneticButton';
 
 const Skills = () => {
     const skills = {
@@ -90,29 +91,37 @@ const Contact = () => {
                     Feel free to reach out if you have a project in mind.
                 </p>
 
-                <motion.a
-                    href="mailto:mohyuddinrao.dev@gmail.com"
-                    className="contact-cta-btn"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => {
-                        navigator.clipboard.writeText("mohyuddinrao.dev@gmail.com");
-                        addToast("Email copied to clipboard!");
-                    }}
-                >
-                    Say Hello <ArrowUpRight size={18} />
-                </motion.a>
+                <MagneticButton>
+                    <motion.a
+                        href="mailto:mohyuddinrao.dev@gmail.com"
+                        className="contact-cta-btn"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                            navigator.clipboard.writeText("mohyuddinrao.dev@gmail.com");
+                            addToast("Email copied to clipboard!");
+                        }}
+                    >
+                        Say Hello <ArrowUpRight size={18} />
+                    </motion.a>
+                </MagneticButton>
 
                 <div className="contact-links">
-                    <motion.a whileHover={{ y: -4, scale: 1.1 }} href="https://www.linkedin.com/in/mohyuddin-rao-b9aa8337a" target="_blank" rel="noreferrer" className="social-icon" title="LinkedIn">
-                        <Linkedin size={22} />
-                    </motion.a>
-                    <motion.a whileHover={{ y: -4, scale: 1.1 }} href="https://github.com/Rao-automates" target="_blank" rel="noreferrer" className="social-icon" title="GitHub">
-                        <Github size={22} />
-                    </motion.a>
-                    <motion.a whileHover={{ y: -4, scale: 1.1 }} href="https://www.upwork.com/freelancers/~0126577e0d5102025d" target="_blank" rel="noreferrer" className="social-icon" title="Upwork">
-                        <ExternalLink size={22} />
-                    </motion.a>
+                    <MagneticButton>
+                        <motion.a whileHover={{ y: -4, scale: 1.1 }} href="https://www.linkedin.com/in/mohyuddin-rao-b9aa8337a" target="_blank" rel="noreferrer" className="social-icon" title="LinkedIn">
+                            <Linkedin size={22} />
+                        </motion.a>
+                    </MagneticButton>
+                    <MagneticButton>
+                        <motion.a whileHover={{ y: -4, scale: 1.1 }} href="https://github.com/Rao-automates" target="_blank" rel="noreferrer" className="social-icon" title="GitHub">
+                            <Github size={22} />
+                        </motion.a>
+                    </MagneticButton>
+                    <MagneticButton>
+                        <motion.a whileHover={{ y: -4, scale: 1.1 }} href="https://www.upwork.com/freelancers/~0126577e0d5102025d" target="_blank" rel="noreferrer" className="social-icon" title="Upwork">
+                            <ExternalLink size={22} />
+                        </motion.a>
+                    </MagneticButton>
                 </div>
             </motion.div>
 
