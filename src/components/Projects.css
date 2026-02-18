@@ -18,11 +18,13 @@
     border: 1px solid var(--border-card);
     border-radius: var(--radius-lg);
     padding: 2rem;
-    transition: all var(--transition-smooth);
+    transition: transform 0.15s ease-out, box-shadow 0.4s, border-color 0.4s, background 0.4s;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
 /* Cursor-following spotlight */
@@ -48,7 +50,9 @@
 
 .project-card:hover {
     border-color: rgba(167, 139, 250, 0.12);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(167, 139, 250, 0.05);
     background: var(--bg-card-hover);
 }
 
@@ -106,6 +110,7 @@
 .tech-tag:hover {
     background: rgba(167, 139, 250, 0.15);
     border-color: rgba(167, 139, 250, 0.3);
+    box-shadow: 0 0 15px rgba(167, 139, 250, 0.1);
 }
 
 .project-links {
@@ -134,5 +139,9 @@
 @media (max-width: 768px) {
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        transform: none !important;
     }
 }
