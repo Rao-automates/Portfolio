@@ -16,7 +16,6 @@ import Reviews from './components/Reviews';
 import Stats from './components/Stats';
 import TechMarquee from './components/TechMarquee';
 import Preloader from './components/Preloader';
-import SideNav from './components/SideNav';
 import './App.css'
 
 function App() {
@@ -54,7 +53,6 @@ function App() {
         <CursorTrail />
         <Terminal />
         <Header />
-        <SideNav />
         <main>
           <Hero />
           <TechMarquee />

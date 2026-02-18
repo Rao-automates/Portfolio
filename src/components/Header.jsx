@@ -50,6 +50,7 @@ const Header = () => {
                     <li><a href="#about" className="nav-link">About</a></li>
                     <li><a href="#experience" className="nav-link">Experience</a></li>
                     <li><a href="#projects" className="nav-link">Projects</a></li>
+                    <li><a href="#reviews" className="nav-link">Reviews</a></li>
                     <li><a href="#skills" className="nav-link">Skills</a></li>
                 </ul>
             </nav>
@@ -81,7 +82,7 @@ const Header = () => {
                                 <div onClick={toggleMenu}><X size={24} /></div>
                             </div>
 
-                            {['About', 'Experience', 'Projects', 'Skills', 'Contact'].map((item) => (
+                            {['About', 'Experience', 'Projects', 'Reviews', 'Skills', 'Contact'].map((item) => (
                                 <div key={item} className="overflow-hidden">
                                     <motion.div variants={mobileLinkVars} className="mobile-link-wrapper">
                                         <a
