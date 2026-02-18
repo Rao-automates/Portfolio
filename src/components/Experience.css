@@ -1,11 +1,10 @@
 .experience-container {
-    padding: 100px 5%;
-    background: var(--bg-color);
-    color: var(--text-primary);
+    padding: 120px 5%;
+    background: var(--bg-secondary);
 }
 
 .timeline {
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
     position: relative;
 }
@@ -14,7 +13,7 @@
     content: '';
     position: absolute;
     width: 2px;
-    background: var(--accent-primary);
+    background: linear-gradient(to bottom, var(--accent-1), var(--accent-3), transparent);
     top: 0;
     bottom: 0;
     left: 50%;
@@ -24,22 +23,20 @@
 .timeline-item {
     padding: 10px 40px;
     position: relative;
-    background-color: inherit;
     width: 50%;
 }
 
 .timeline-item::after {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
-    right: -10px;
-    background-color: var(--bg-color);
-    border: 4px solid var(--accent-secondary);
+    width: 14px;
+    height: 14px;
+    right: -7px;
+    background: var(--gradient-accent);
     top: 25px;
     border-radius: 50%;
     z-index: 1;
-    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(167, 139, 250, 0.3);
 }
 
 .left {
@@ -58,9 +55,9 @@
     width: 0;
     z-index: 1;
     right: 30px;
-    border: medium solid var(--accent-primary);
+    border: medium solid transparent;
     border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent rgba(30, 41, 59, 0.7);
+    border-color: transparent transparent transparent var(--bg-card);
 }
 
 .right::before {
@@ -71,98 +68,101 @@
     width: 0;
     z-index: 1;
     left: 30px;
-    border: medium solid var(--accent-primary);
+    border: medium solid transparent;
     border-width: 10px 10px 10px 0;
-    border-color: transparent rgba(30, 41, 59, 0.7) transparent transparent;
+    border-color: transparent var(--bg-card) transparent transparent;
 }
 
 .right::after {
-    left: -10px;
+    left: -7px;
 }
 
 .timeline-content {
-    padding: 20px 30px;
-    background: rgba(30, 41, 59, 0.4);
-    backdrop-filter: blur(5px);
-    position: relative;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 1.5rem 2rem;
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-card);
+    transition: all var(--transition-smooth);
 }
 
 .timeline-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-    border-color: var(--accent-primary);
+    transform: translateY(-4px);
+    border-color: rgba(167, 139, 250, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 .date {
-    color: var(--accent-primary);
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin-bottom: 0.5rem;
     display: block;
 }
 
 .job-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+    font-weight: 700;
 }
 
 .company {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text-secondary);
     margin-bottom: 1rem;
-    font-style: italic;
-}
-
-.job-desc {
-    list-style: none;
+    font-style: normal;
+    font-weight: 500;
 }
 
 .job-desc li {
     margin-bottom: 0.5rem;
     position: relative;
     padding-left: 20px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
 }
 
 .job-desc li::before {
-    content: '▹';
+    content: '▸';
     position: absolute;
     left: 0;
-    color: var(--accent-secondary);
+    color: var(--accent-1);
 }
 
 @media (max-width: 768px) {
     .timeline::after {
-        left: 31px;
+        left: 20px;
     }
 
     .timeline-item {
         width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
+        padding-left: 50px;
+        padding-right: 15px;
     }
 
     .timeline-item::before {
-        left: 60px;
-        border: medium solid white;
+        left: 50px;
+        border: medium solid transparent;
         border-width: 10px 10px 10px 0;
-        border-color: transparent rgba(30, 41, 59, 0.7) transparent transparent;
+        border-color: transparent var(--bg-card) transparent transparent;
     }
 
     .left::after,
     .right::after {
-        left: 21px;
+        left: 13px;
     }
 
     .right {
-        left: 0%;
+        left: 0;
     }
 
     .left::before {
         border-width: 10px 10px 10px 0;
-        border-color: transparent rgba(30, 41, 59, 0.7) transparent transparent;
-        left: 60px;
+        border-color: transparent var(--bg-card) transparent transparent;
+        left: 50px;
     }
 }

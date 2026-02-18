@@ -1,80 +1,58 @@
 import './Footer.css';
-import { Mail, Linkedin, Github, ExternalLink, Database, Server, Terminal, Monitor, Cpu } from 'lucide-react';
+import { Mail, Linkedin, Github, ExternalLink, Server, Terminal, Monitor, Cpu } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useToast } from './Toast';
 
 const Skills = () => {
     const skills = {
-        "Automation & AI": ["n8n Orchestration", "RAG Pipelines", "AI Agents", "LinkedIn Automation"],
-        "Backend Engineering": ["FastAPI", "Python", "Flask", "Firebase"],
-        "Microsoft Stack": [".NET Framework", "C#", "SQL Server", "Windows Apps", "Visual Studio"],
-        "DevOps & Cloud": ["Docker", "AWS (EC2)", "GitHub Actions", "Linux"]
-    };
-
-    const container = {
-        hidden: { opacity: 0 },
-        show: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1
-            }
-        }
-    };
-
-    const item = {
-        hidden: { opacity: 0, scale: 0.8 },
-        show: { opacity: 1, scale: 1 }
+        "Automation & AI": { icon: <Cpu size={20} />, items: ["n8n Orchestration", "RAG Pipelines", "AI Agents", "LinkedIn Automation"] },
+        "Backend Engineering": { icon: <Server size={20} />, items: ["FastAPI", "Python", "Flask", "Firebase"] },
+        "Microsoft Stack": { icon: <Monitor size={20} />, items: [".NET Framework", "C#", "SQL Server", "Windows Apps", "Visual Studio"] },
+        "DevOps & Cloud": { icon: <Terminal size={20} />, items: ["Docker", "AWS (EC2)", "GitHub Actions", "Linux"] }
     };
 
     return (
         <section id="skills" className="skills-container">
-            <motion.h2
-                className="section-title"
-                style={{ textAlign: 'center', marginBottom: '4rem' }}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-            >
-                Tech Arsenal
-            </motion.h2>
+            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                <motion.h2
+                    className="section-title"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
+                    Skills & Tools
+                </motion.h2>
+                <motion.p
+                    className="section-subtitle"
+                    style={{ margin: '0.5rem auto 0' }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    viewport={{ once: true }}
+                >
+                    Technologies I work with daily.
+                </motion.p>
+            </div>
 
             <div className="skills-grid">
-                {Object.entries(skills).map(([category, items], idx) => (
+                {Object.entries(skills).map(([category, data], idx) => (
                     <motion.div
                         key={category}
                         className="skill-category"
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: idx * 0.1 }}
-                        whileHover={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.03)" }}
+                        viewport={{ once: true }}
                     >
-                        {/* Icon based on category could be added here */}
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}>
-                            {category.includes("Microsoft") ? <Monitor color="#0078D4" /> :
-                                category.includes("Backend") ? <Server color="#22c55e" /> :
-                                    category.includes("Automation") ? <Cpu color="#ec4899" /> : <Terminal color="#eab308" />}
-                            <h3 style={{ margin: 0, border: 'none' }}>{category}</h3>
+                        <div className="skill-category-header">
+                            <span style={{ color: 'var(--accent-1)' }}>{data.icon}</span>
+                            <h3>{category}</h3>
                         </div>
-
-                        <motion.div
-                            className="skill-list"
-                            variants={container}
-                            initial="hidden"
-                            whileInView="show"
-                            viewport={{ once: true }}
-                        >
-                            {items.map((skill, index) => (
-                                <motion.div
-                                    key={index}
-                                    className="skill-item"
-                                    variants={item}
-                                    whileHover={{ x: 5, color: "var(--accent-primary)", backgroundColor: "rgba(14, 165, 233, 0.1)" }}
-                                >
-                                    <span style={{ marginRight: '8px', color: 'var(--accent-secondary)' }}>▹</span>
-                                    <span className="skill-name">{skill}</span>
-                                </motion.div>
+                        <div className="skill-list">
+                            {data.items.map((skill, index) => (
+                                <span key={index} className="skill-chip">{skill}</span>
                             ))}
-                        </motion.div>
+                        </div>
                     </motion.div>
                 ))}
             </div>
@@ -88,21 +66,24 @@ const Contact = () => {
         <section id="contact" className="contact-container">
             <motion.div
                 className="contact-content"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
             >
-                <h2 className="glitch-text" style={{ fontSize: '3rem', marginBottom: '1rem' }}>INITIALIZE CONNECTION</h2>
-                <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 3rem', fontFamily: 'monospace' }}>
-                    // READY TO COLLABORATE ON NEXT-GEN PROJECTS
+                <h2 className="contact-heading">
+                    Let's Build <span style={{ background: 'var(--gradient-accent)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Something</span> Together
+                </h2>
+                <p className="contact-desc">
+                    I'm always open to new opportunities and collaborations.
+                    Feel free to reach out if you have a project in mind.
                 </p>
 
                 <div className="contact-links">
                     <motion.div
-                        whileHover={{ y: -5, scale: 1.1, color: "#ea580c" }}
+                        whileHover={{ y: -3 }}
                         className="social-icon"
-                        title="Email (Click to Copy)"
+                        title="Email"
                         style={{ cursor: 'pointer' }}
                         onClick={() => {
                             navigator.clipboard.writeText("mohyuddinrao.dev@gmail.com");
@@ -110,22 +91,22 @@ const Contact = () => {
                             window.location.href = "mailto:mohyuddinrao.dev@gmail.com";
                         }}
                     >
-                        <Mail size={32} />
+                        <Mail size={22} />
                     </motion.div>
-                    <motion.a whileHover={{ y: -5, scale: 1.1, color: "#0077b5" }} href="https://www.linkedin.com/in/mohyuddin-rao-b9aa8337a" target="_blank" rel="noreferrer" className="social-icon" title="LinkedIn">
-                        <Linkedin size={32} />
+                    <motion.a whileHover={{ y: -3 }} href="https://www.linkedin.com/in/mohyuddin-rao-b9aa8337a" target="_blank" rel="noreferrer" className="social-icon" title="LinkedIn">
+                        <Linkedin size={22} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -5, scale: 1.1, color: "#ffffff" }} href="https://github.com/Rao-automates" target="_blank" rel="noreferrer" className="social-icon" title="GitHub">
-                        <Github size={32} />
+                    <motion.a whileHover={{ y: -3 }} href="https://github.com/Rao-automates" target="_blank" rel="noreferrer" className="social-icon" title="GitHub">
+                        <Github size={22} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -5, scale: 1.1, color: "#14a800" }} href="https://www.upwork.com/freelancers/~0126577e0d5102025d" target="_blank" rel="noreferrer" className="social-icon" title="Upwork">
-                        <ExternalLink size={32} />
+                    <motion.a whileHover={{ y: -3 }} href="https://www.upwork.com/freelancers/~0126577e0d5102025d" target="_blank" rel="noreferrer" className="social-icon" title="Upwork">
+                        <ExternalLink size={22} />
                     </motion.a>
                 </div>
             </motion.div>
 
             <footer className="footer-bottom">
-                <p style={{ fontFamily: 'monospace', opacity: 0.5 }}>SYSTEM.EXIT(0) // © {new Date().getFullYear()} MOHYUDDIN RAO</p>
+                <p>© {new Date().getFullYear()} Mohyuddin Rao. All rights reserved.</p>
             </footer>
         </section>
     );

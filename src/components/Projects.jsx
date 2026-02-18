@@ -1,5 +1,5 @@
 import './Projects.css';
-import { Github, ExternalLink, Folder } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Projects = () => {
@@ -32,25 +32,38 @@ const Projects = () => {
 
     return (
         <section id="projects" className="projects-container">
-            <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '4rem' }}>Featured Projects</h2>
+            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                <motion.h2
+                    className="section-title"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
+                    Featured Projects
+                </motion.h2>
+                <motion.p
+                    className="section-subtitle"
+                    style={{ margin: '0.5rem auto 0' }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    viewport={{ once: true }}
+                >
+                    A selection of recent work in automation and backend engineering.
+                </motion.p>
+            </div>
 
             <div className="projects-grid">
                 {projects.map((project, index) => (
                     <motion.div
                         key={index}
                         className="project-card"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        whileHover={{
-                            y: -10,
-                            boxShadow: "0 0 25px var(--accent-glow)",
-                            borderColor: "var(--accent-primary)"
-                        }}
+                        viewport={{ once: true }}
                     >
-                        <div style={{ marginBottom: '1rem', color: 'var(--accent-secondary)', position: 'relative', zIndex: 2 }}>
-                            <Folder size={40} />
-                        </div>
+                        <span className="project-number">Project 0{index + 1}</span>
                         <h3 className="project-title">{project.title}</h3>
                         <p className="project-desc">{project.description}</p>
                         <div className="project-tech">
@@ -60,40 +73,21 @@ const Projects = () => {
                         </div>
                         <div className="project-links">
                             {project.links.github === '#' ? (
-                                <span
-                                    className="project-link"
-                                    style={{ cursor: 'not-allowed', opacity: 0.7 }}
-                                    onClick={() => alert("Repository is private or not linked yet!")}
-                                >
-                                    <Github size={18} /> Code
+                                <span className="project-link" style={{ cursor: 'not-allowed', opacity: 0.5 }}>
+                                    <Github size={16} /> Code
                                 </span>
                             ) : (
-                                <a
-                                    href={project.links.github}
-                                    className="project-link"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <Github size={18} /> Code
+                                <a href={project.links.github} className="project-link" target="_blank" rel="noopener noreferrer">
+                                    <Github size={16} /> Code
                                 </a>
                             )}
-
                             {project.links.live === '#' ? (
-                                <span
-                                    className="project-link"
-                                    style={{ cursor: 'not-allowed', opacity: 0.7 }}
-                                    onClick={() => alert("Live demo coming soon!")}
-                                >
-                                    <ExternalLink size={18} /> Live Demo
+                                <span className="project-link" style={{ cursor: 'not-allowed', opacity: 0.5 }}>
+                                    <ExternalLink size={16} /> Live Demo
                                 </span>
                             ) : (
-                                <a
-                                    href={project.links.live}
-                                    className="project-link"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <ExternalLink size={18} /> Live Demo
+                                <a href={project.links.live} className="project-link" target="_blank" rel="noopener noreferrer">
+                                    <ExternalLink size={16} /> Live Demo
                                 </a>
                             )}
                         </div>
