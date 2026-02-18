@@ -8,25 +8,25 @@ const Projects = () => {
             title: "RAG Document Analysis Pipeline",
             description: "Architected a two-stage Retrieval-Augmented Generation (RAG) pipeline using n8n for automated document ingestion and intelligent analysis. Processes unstructured files via OCR.",
             tech: ["n8n", "LLM", "OCR", "Vector DB"],
-            links: { github: "#", live: "#" }
+            links: { github: "https://github.com/Rao-automates/N8N-AI-Document-Processing-Chat-System", live: "#" }
         },
         {
             title: "LinkedIn Content Automation",
             description: "Developed an end-to-end autonomous n8n workflow for content generation, scheduling, and community engagement using LLMs to generate high-authority technical posts.",
             tech: ["n8n", "AI Agents", "LinkedIn API"],
-            links: { github: "#", live: "#" }
+            links: { github: "https://github.com/Rao-automates/LinkedIn-Content-Automation-System", live: "#" }
         },
         {
             title: "Autonomous Lead Qualification",
             description: "Engineered an intelligent n8n workflow that automates the lead qualification process from Google Sheets to calendar booking.",
             tech: ["n8n", "Google Sheets", "Calendar API"],
-            links: { github: "#", live: "#" }
+            links: { github: "https://github.com/Rao-automates/Lead-Qualification-Scheduling-Workflow", live: "#" }
         },
         {
             title: "House-Mate: Cost Estimator",
             description: "Built a FastAPI + Firebase backend that automates construction budgeting based on real-time market data. Deployed on AWS EC2 with Docker.",
             tech: ["FastAPI", "Firebase", "Docker", "AWS"],
-            links: { github: "#", live: "#" }
+            links: { github: "https://github.com/TaskeenZehra/HouseMate-Api-Backend", live: "#" }
         }
     ];
 
