@@ -1,0 +1,132 @@
+.terminal-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid var(--accent-primary);
+    color: var(--accent-primary);
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.2);
+}
+
+.terminal-toggle:hover {
+    background: var(--accent-primary);
+    color: #000;
+    box-shadow: 0 0 20px var(--accent-primary);
+}
+
+.terminal-window {
+    position: fixed;
+    bottom: 5rem;
+    right: 2rem;
+    width: 500px;
+    height: 350px;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 1001;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    font-family: 'Courier New', monospace;
+}
+
+.terminal-header {
+    background: #1e293b;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    cursor: grab;
+}
+
+.terminal-title {
+    color: #94a3b8;
+    font-size: 0.8rem;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control-icon {
+    color: #64748b;
+    cursor: pointer;
+}
+
+.control-icon:hover {
+    color: #fff;
+}
+
+.control-icon.close:hover {
+    color: #ef4444;
+}
+
+.terminal-body {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    color: #e2e8f0;
+    font-size: 0.9rem;
+}
+
+.terminal-line {
+    margin-bottom: 5px;
+    word-wrap: break-word;
+}
+
+.terminal-line.command {
+    color: #94a3b8;
+}
+
+.terminal-line.success {
+    color: #22c55e;
+}
+
+.terminal-line.error {
+    color: #ef4444;
+}
+
+.terminal-line.info {
+    color: #38bdf8;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.prompt {
+    color: #22c55e;
+    font-weight: bold;
+}
+
+.input-line input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: inherit;
+    font-size: inherit;
+    flex: 1;
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    .terminal-window {
+        width: 90%;
+        right: 5%;
+        left: 5%;
+    }
+}
