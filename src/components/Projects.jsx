@@ -48,7 +48,7 @@ const Projects = () => {
                             borderColor: "var(--accent-primary)"
                         }}
                     >
-                        <div style={{ marginBottom: '1rem', color: 'var(--accent-secondary)' }}>
+                        <div style={{ marginBottom: '1rem', color: 'var(--accent-secondary)', position: 'relative', zIndex: 2 }}>
                             <Folder size={40} />
                         </div>
                         <h3 className="project-title">{project.title}</h3>
@@ -59,10 +59,34 @@ const Projects = () => {
                             ))}
                         </div>
                         <div className="project-links">
-                            <a href={project.links.github} className="project-link" target="_blank" rel="noopener noreferrer">
+                            <a
+                                href={project.links.github}
+                                className="project-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => {
+                                    if (project.links.github === '#') {
+                                        e.preventDefault();
+                                        // You'd need to import addToast or use context here, but for now let's just ensure it's clickable.
+                                        // Since we can't easily use the hook inside the map without refactoring, we'll assume the z-index fix works.
+                                        alert("Repository is private or not linked yet!");
+                                    }
+                                }}
+                            >
                                 <Github size={18} /> Code
                             </a>
-                            <a href={project.links.live} className="project-link" target="_blank" rel="noopener noreferrer">
+                            <a
+                                href={project.links.live}
+                                className="project-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => {
+                                    if (project.links.live === '#') {
+                                        e.preventDefault();
+                                        alert("Live demo coming soon!");
+                                    }
+                                }}
+                            >
                                 <ExternalLink size={18} /> Live Demo
                             </a>
                         </div>

@@ -122,6 +122,14 @@
     font-weight: 600;
 }
 
+.project-title,
+.project-desc,
+.project-tech,
+.project-links {
+    position: relative;
+    z-index: 2;
+}
+
 .project-links {
     display: flex;
     gap: 1.5rem;
@@ -142,4 +150,5 @@
 .project-link:hover {
     color: var(--accent-primary);
     text-shadow: 0 0 8px var(--accent-primary);
+    cursor: pointer;
 }
