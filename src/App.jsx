@@ -12,6 +12,7 @@ import Terminal from './components/Terminal';
 import ScrollProgress from './components/ScrollProgress';
 import ParticleNetwork from './components/ParticleNetwork';
 import CursorTrail from './components/CursorTrail';
+import Reviews from './components/Reviews';
 import Stats from './components/Stats';
 import TechMarquee from './components/TechMarquee';
 import Preloader from './components/Preloader';
@@ -61,6 +62,7 @@ function App() {
           <Stats />
           <Experience />
           <Projects />
+          <Reviews />
           <Skills />
           <Contact />
         </main>
