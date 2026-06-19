@@ -95,7 +95,7 @@ const About = () => {
                         <a href="https://www.linkedin.com/in/mohyuddin-rao-b9aa8337a" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ justifyContent: 'center' }}>
                             LinkedIn
                         </a>
-                        <a href="mailto:mohyuddinrao.dev@gmail.com" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ justifyContent: 'center' }}>
+                        <a href="mailto:mohyuddinrao.dev@gmail.com" className="neu-btn outline" style={{ justifyContent: 'center' }}>
                             Email Me
                         </a>
                         <a href="https://www.upwork.com/freelancers/~0126577e0d5102025d" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ justifyContent: 'center' }}>
