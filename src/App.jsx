@@ -27,7 +27,7 @@ function App() {
   return (
     <ToastProvider>
       {!loaded && <Preloader onComplete={handlePreloaderComplete} />}
-      <div style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s', width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s' }}>
         <div className="app-container">
           <nav className="top-nav">
             <div className="logo">Rao.</div>
