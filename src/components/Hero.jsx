@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
-const Hero = () => {
+const Hero = ({ setActiveTab }) => {
     return (
         <div className="hero">
             <motion.div
@@ -46,10 +46,10 @@ const Hero = () => {
                 transition={{ delay: 1, duration: 0.8, type: 'spring' }}
                 style={{ display: 'flex', justifyContent: 'center', gap: '16px', marginTop: '32px', flexWrap: 'wrap' }}
             >
-                <button className="neu-btn" style={{ gap: '8px' }}>
+                <button className="neu-btn" style={{ gap: '8px' }} onClick={() => setActiveTab('projects')}>
                     View My Work <ArrowRight size={18} />
                 </button>
-                <button className="neu-btn" style={{ fontWeight: 600, color: 'var(--text-light)' }}>
+                <button className="neu-btn" style={{ fontWeight: 600, color: 'var(--text-light)' }} onClick={() => setActiveTab('about')}>
                     Get in Touch
                 </button>
             </motion.div>

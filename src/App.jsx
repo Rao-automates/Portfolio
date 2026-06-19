@@ -46,7 +46,7 @@ function App() {
           
           <div className="content-area">
             <section className={`app-section ${activeTab === 'home' ? 'active' : ''}`}>
-              <Hero />
+              <Hero setActiveTab={setActiveTab} />
               <TechMarquee />
               <Stats />
             </section>

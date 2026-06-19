@@ -35,6 +35,39 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Floating Animated Glass Orbs */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    animation: floatOrb 20s infinite alternate ease-in-out;
+}
+
+body::before {
+    background: rgba(66, 153, 225, 0.25);
+    top: -10vw;
+    left: -10vw;
+}
+
+body::after {
+    background: rgba(159, 122, 234, 0.2);
+    bottom: -10vw;
+    right: -10vw;
+    animation-delay: -10s;
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(10vw, 15vw) scale(1.2); }
+    100% { transform: translate(-10vw, 5vw) scale(0.9); }
 }
 
 @keyframes gradientBG {
@@ -213,7 +246,10 @@ body {
 
 /* Cards */
 .neu-card {
-    background: var(--bg-color);
+    background: rgba(238, 242, 249, 0.5);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: 40px;
     padding: 2.5rem;
     box-shadow: var(--neu-shadow);
@@ -513,7 +549,10 @@ body {
 .hero {
     text-align: center;
     padding: 40px 20px;
-    background: var(--bg-color);
+    background: rgba(238, 242, 249, 0.5);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: 30px;
     box-shadow: var(--neu-shadow);
     margin-bottom: 40px;
