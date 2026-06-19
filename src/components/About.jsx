@@ -80,6 +80,29 @@ const About = () => {
                         </div>
                     </div>
                 </motion.div>
+                <motion.div
+                    className="bento-item bento-wide"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.3 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                >
+                    <div className="card-title">Connect & Links</div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', height: '100%', alignContent: 'center' }}>
+                        <a href="https://github.com/Rao-automates" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ justifyContent: 'center' }}>
+                            GitHub
+                        </a>
+                        <a href="https://linkedin.com/in/mohyuddin-rao" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ justifyContent: 'center' }}>
+                            LinkedIn
+                        </a>
+                        <a href="mailto:raomohyuddin75@gmail.com" className="neu-btn outline" style={{ justifyContent: 'center' }}>
+                            Email Me
+                        </a>
+                        <a href="https://upwork.com" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ justifyContent: 'center' }}>
+                            Upwork
+                        </a>
+                    </div>
+                </motion.div>
             </div>
         </div>
     );
