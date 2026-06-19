@@ -1,37 +1,36 @@
 import { motion } from 'framer-motion';
 import useAnimatedCounter from '../hooks/useAnimatedCounter';
 
-const StatItem = ({ value, suffix, label, delay }) => {
+const StatItem = ({ value, suffix, label, delay, bentoClass }) => {
     const { count, ref } = useAnimatedCounter(value, 2000);
 
     return (
         <motion.div
             ref={ref}
-            className="neu-card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true }}
-            style={{ padding: '1.5rem', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '8px', minWidth: '200px', flex: 1 }}
+            className={`bento-item ${bentoClass}`}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-50px" }}
         >
-            <span style={{ fontSize: '2.5rem', fontWeight: 800, color: 'var(--accent)', textShadow: '2px 2px 4px rgba(163, 177, 198, 0.4)' }}>
-                {count}{suffix}
+            <span style={{ fontSize: '3.5rem', fontWeight: 900, color: 'var(--text-color)', lineHeight: 1, marginBottom: '8px' }}>
+                {count}<span style={{ color: 'var(--accent)' }}>{suffix}</span>
             </span>
-            <span style={{ color: 'var(--text-light)', fontWeight: 700, fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{label}</span>
+            <span style={{ color: 'var(--text-light)', fontWeight: 600, fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{label}</span>
         </motion.div>
     );
 };
 
 const Stats = () => {
     const stats = [
-        { value: 20, suffix: '+', label: 'Projects Delivered' },
-        { value: 5, suffix: '+', label: 'Automation Pipelines' },
-        { value: 30, suffix: '%', label: 'Efficiency Gained' },
-        { value: 3, suffix: '.53', label: 'GPA at PAF-KIET' },
+        { value: 20, suffix: '+', label: 'Projects Delivered', bentoClass: 'bento-wide' },
+        { value: 5, suffix: '+', label: 'Automation Pipelines', bentoClass: '' },
+        { value: 30, suffix: '%', label: 'Efficiency Gained', bentoClass: '' },
+        { value: 3, suffix: '.53', label: 'GPA at PAF-KIET', bentoClass: 'bento-wide' },
     ];
 
     return (
-        <div style={{ maxWidth: '1000px', margin: '3rem auto', display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+        <div className="bento-grid" style={{ maxWidth: '1000px', margin: '3rem auto' }}>
             {stats.map((stat, i) => (
                 <StatItem key={i} {...stat} delay={i * 0.1} />
             ))}

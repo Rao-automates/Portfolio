@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { ToastProvider } from './components/Toast';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -11,7 +11,6 @@ import './App.css';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-  const [activeTab, setActiveTab] = useState('home');
 
   const handlePreloaderComplete = useCallback(() => {
     setLoaded(true);
@@ -24,19 +23,27 @@ function App() {
     { id: 'about', label: 'About' }
   ];
 
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <ToastProvider>
       {!loaded && <Preloader onComplete={handlePreloaderComplete} />}
       <div style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s' }}>
         <div className="app-container">
           <nav className="top-nav">
-            <div className="logo">Rao.</div>
-            <div className="nav-pills">
+            <div className="logo">Rao<span>.</span></div>
+            <div className="nav-links">
               {navItems.map(item => (
                 <button 
                   key={item.id}
-                  className={`nav-btn ${activeTab === item.id ? 'active' : ''}`}
-                  onClick={() => setActiveTab(item.id)}
+                  className="nav-link"
+                  style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}
+                  onClick={() => scrollToSection(item.id)}
                 >
                   {item.label}
                 </button>
@@ -45,21 +52,21 @@ function App() {
           </nav>
           
           <div className="content-area">
-            <section className={`app-section ${activeTab === 'home' ? 'active' : ''}`}>
-              <Hero setActiveTab={setActiveTab} />
+            <section id="home" className="app-section">
+              <Hero />
               <TechMarquee />
               <Stats />
             </section>
             
-            <section className={`app-section ${activeTab === 'projects' ? 'active' : ''}`}>
+            <section id="projects" className="app-section">
               <Projects />
             </section>
             
-            <section className={`app-section ${activeTab === 'experience' ? 'active' : ''}`}>
+            <section id="experience" className="app-section">
               <Experience />
             </section>
             
-            <section className={`app-section ${activeTab === 'about' ? 'active' : ''}`}>
+            <section id="about" className="app-section">
               <About />
             </section>
           </div>

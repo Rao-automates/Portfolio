@@ -42,34 +42,43 @@ const Experience = () => {
     ];
 
     return (
-        <div style={{ maxWidth: '800px', margin: '0 auto', paddingTop: '1rem' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <div className="section-header">
                 <h2>Experience</h2>
                 <span className="type-badge nonhomo">Professional</span>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
                 {experiences.map((exp, index) => (
                     <motion.div
                         key={index}
-                        className="neu-card"
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        style={{ padding: '2rem' }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        style={{
+                            background: 'var(--card-bg)',
+                            border: '1px solid var(--border-color)',
+                            padding: '2.5rem',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '20px',
+                            transition: 'border-color 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--accent)'}
+                        onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--border-color)'}
                     >
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px', marginBottom: '16px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px' }}>
                             <div>
-                                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--text-color)' }}>{exp.title}</h3>
-                                <div style={{ color: 'var(--accent)', fontWeight: 700 }}>{exp.company}</div>
+                                <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-color)', marginBottom: '8px' }}>{exp.title}</h3>
+                                <div className="text-accent" style={{ fontWeight: 600 }}>{exp.company}</div>
                             </div>
-                            <div className="nav-badge" style={{ fontSize: '12px', padding: '6px 12px' }}>
+                            <div className="type-badge" style={{ fontSize: '11px' }}>
                                 {exp.date}
                             </div>
                         </div>
                         
-                        <ul style={{ paddingLeft: '20px', color: 'var(--text-light)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <ul style={{ paddingLeft: '20px', color: 'var(--text-light)', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '1.05rem', lineHeight: 1.6 }}>
                             {exp.description.map((desc, i) => (
                                 <li key={i}>{desc}</li>
                             ))}
