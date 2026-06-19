@@ -101,6 +101,9 @@ const About = () => {
                         <a href="https://www.upwork.com/freelancers/~0126577e0d5102025d" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ justifyContent: 'center' }}>
                             Upwork
                         </a>
+                        <a href="https://drive.google.com/file/d/1RN3RIXmvA8jcDu3XAzb_OpVdHkZJ5Xt3/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ justifyContent: 'center', gridColumn: '1 / -1', border: '1px solid var(--accent)', color: 'var(--accent)' }}>
+                            Download CV
+                        </a>
                     </div>
                 </motion.div>
             </div>

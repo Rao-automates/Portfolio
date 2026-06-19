@@ -58,6 +58,9 @@ const Hero = () => {
                 <button className="neu-btn outline" onClick={() => scrollToSection('about')}>
                     Get in Touch
                 </button>
+                <a href="https://drive.google.com/file/d/1RN3RIXmvA8jcDu3XAzb_OpVdHkZJ5Xt3/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ textDecoration: 'none' }}>
+                    Download CV
+                </a>
             </motion.div>
         </div>
     );
