@@ -15,12 +15,12 @@ const Preloader = ({ onComplete }) => {
                     setTimeout(() => {
                         setPhase('done');
                         onComplete();
-                    }, 1200);
+                    }, 1000);
                     return 100;
                 }
-                return prev + Math.random() * 8 + 2;
+                return prev + Math.random() * 12 + 2;
             });
-        }, 50);
+        }, 40);
         return () => clearInterval(timer);
     }, [onComplete]);
 
@@ -29,17 +29,20 @@ const Preloader = ({ onComplete }) => {
             {phase !== 'done' && (
                 <motion.div
                     className="preloader"
-                    exit={{ clipPath: 'circle(0% at 50% 50%)' }}
+                    exit={{ y: '-100%' }}
                     transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
                 >
+                    {/* Animated grid lines */}
+                    <div className="preloader-grid"></div>
+
                     <div className="preloader-content">
                         <motion.div
                             className="preloader-logo"
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ type: 'spring', stiffness: 200 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
                         >
-                            <span className="preloader-name">MR</span>
+                            <span className="preloader-name">MR<span>.</span></span>
                         </motion.div>
 
                         <div className="preloader-bar-track">
@@ -53,14 +56,11 @@ const Preloader = ({ onComplete }) => {
                             className="preloader-text"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 0.3 }}
+                            transition={{ delay: 0.2 }}
                         >
                             {Math.min(Math.floor(progress), 100)}%
                         </motion.p>
                     </div>
-
-                    {/* Animated grid lines */}
-                    <div className="preloader-grid"></div>
                 </motion.div>
             )}
         </AnimatePresence>
