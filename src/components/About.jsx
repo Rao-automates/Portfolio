@@ -1,83 +1,61 @@
-import './About.css';
 import profileImg from '../assets/profile_new.jpg';
 import { Code, Database, Server, Zap, Braces, Cloud, Bot, Workflow } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const floatingBadges = [
-    { icon: <Braces size={16} />, label: "Python", x: -30, y: -20, delay: 0 },
-    { icon: <Server size={16} />, label: "FastAPI", x: 280, y: 10, delay: 0.5 },
-    { icon: <Bot size={16} />, label: "AI/RAG", x: -20, y: 280, delay: 1 },
-    { icon: <Cloud size={16} />, label: "AWS", x: 260, y: 300, delay: 1.5 },
-];
-
 const About = () => {
     return (
-        <section id="about" className="about-container">
-            <div className="about-content">
+        <div style={{ maxWidth: '1000px', margin: '0 auto', paddingTop: '1rem' }}>
+            <div className="section-header">
+                <h2>About Me</h2>
+                <span className="type-badge nonhomo">Profile</span>
+            </div>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
                 <motion.div
-                    className="about-image-wrapper"
+                    className="neu-card"
                     initial={{ opacity: 0, x: -40 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.7 }}
                     viewport={{ once: true }}
+                    style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}
                 >
-                    <div className="about-image-glow"></div>
-                    <img src={profileImg} alt="Mohyuddin Rao" className="about-image" />
-
-                    {/* Floating tech badges */}
-                    {floatingBadges.map((badge, i) => (
-                        <motion.div
-                            key={i}
-                            className="floating-badge"
-                            style={{ left: badge.x, top: badge.y }}
-                            initial={{ opacity: 0, scale: 0 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: badge.delay + 0.5, type: 'spring', stiffness: 200 }}
-                            viewport={{ once: true }}
-                            animate={{ y: [0, -8, 0] }}
-                            // @ts-ignore
-                            transition2={{ y: { duration: 3, repeat: Infinity, delay: badge.delay } }}
-                        >
-                            {badge.icon}
-                            <span>{badge.label}</span>
-                        </motion.div>
-                    ))}
+                    <img 
+                        src={profileImg} 
+                        alt="Mohyuddin Rao" 
+                        style={{ width: '200px', height: '200px', borderRadius: '50%', objectFit: 'cover', boxShadow: 'var(--neu-shadow)', marginBottom: '20px' }} 
+                    />
+                    <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-color)' }}>Mohyuddin Rao</h3>
+                    <p style={{ color: 'var(--text-light)', fontWeight: 600 }}>Computer Science Student</p>
+                    <p style={{ color: 'var(--accent)', fontWeight: 800 }}>PAF-KIET (3.53 GPA)</p>
                 </motion.div>
 
                 <motion.div
-                    className="about-text"
+                    className="neu-card"
                     initial={{ opacity: 0, x: 40 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.7, delay: 0.2 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="section-title">About Me</h2>
-
-                    <p>
-                        I am a Computer Science student at <strong>PAF-KIET (3.53 GPA)</strong> specializing in
-                        <span className="highlight"> FastAPI</span>,
-                        <span className="highlight"> Firebase</span>, and
-                        <span className="highlight"> Advanced n8n Automation</span>.
+                    <div className="card-title">Background</div>
+                    <p style={{ color: 'var(--text-light)', fontSize: '1.05rem', marginBottom: '20px', lineHeight: 1.6 }}>
+                        Specializing in <strong style={{ color: 'var(--accent)' }}>FastAPI</strong>, <strong style={{ color: 'var(--accent)' }}>Firebase</strong>, and <strong style={{ color: 'var(--accent)' }}>Advanced n8n Automation</strong>.
+                    </p>
+                    <p style={{ color: 'var(--text-light)', fontSize: '1.05rem', marginBottom: '30px', lineHeight: 1.6 }}>
+                        Expert in architecting intelligent workflows, including RAG pipelines and autonomous lead qualification systems. I have a proven track record of delivering production-ready backend solutions and distributed network services for global clients via Upwork.
                     </p>
 
-                    <p>
-                        Expert in architecting intelligent workflows, including RAG pipelines and autonomous lead qualification systems.
-                        I have a proven track record of delivering production-ready backend solutions and distributed network services
-                        for global clients via Upwork.
-                    </p>
-
-                    <div className="tech-stack">
-                        <h3 className="tech-title">Core Technologies</h3>
-                        <div className="tech-icons">
-                            <motion.div whileHover={{ scale: 1.3, rotate: 5 }} title="Backend"><Server /></motion.div>
-                            <motion.div whileHover={{ scale: 1.3, rotate: -5 }} title="Database"><Database /></motion.div>
-                            <motion.div whileHover={{ scale: 1.3, rotate: 5 }} title="Automation"><Zap /></motion.div>
-                            <motion.div whileHover={{ scale: 1.3, rotate: -5 }} title="Code"><Code /></motion.div>
-                        </div>
+                    <div className="card-title">Core Technologies</div>
+                    <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+                        <div className="nav-num" style={{ width: '40px', height: '40px', fontSize: '18px' }} title="Backend"><Server size={18}/></div>
+                        <div className="nav-num" style={{ width: '40px', height: '40px', fontSize: '18px' }} title="Database"><Database size={18}/></div>
+                        <div className="nav-num" style={{ width: '40px', height: '40px', fontSize: '18px', color: 'var(--accent)' }} title="Automation"><Zap size={18}/></div>
+                        <div className="nav-num" style={{ width: '40px', height: '40px', fontSize: '18px' }} title="Code"><Code size={18}/></div>
+                        <div className="nav-num" style={{ width: '40px', height: '40px', fontSize: '18px', color: 'var(--homo)' }} title="AI"><Bot size={18}/></div>
+                        <div className="nav-num" style={{ width: '40px', height: '40px', fontSize: '18px', color: 'var(--nonhomo)' }} title="Workflows"><Workflow size={18}/></div>
                     </div>
                 </motion.div>
             </div>
-        </section>
+        </div>
     );
 };
 

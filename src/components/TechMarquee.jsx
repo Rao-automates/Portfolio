@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import './TechMarquee.css';
 
 const allTech = [
     "Python", "FastAPI", "Firebase", "n8n", "Docker", "AWS",
@@ -8,20 +7,22 @@ const allTech = [
 ];
 
 const TechMarquee = () => {
-    // Duplicate for seamless loop
     const items = [...allTech, ...allTech];
 
     return (
-        <div className="marquee-container">
-            <div className="marquee-fade marquee-fade-left"></div>
-            <div className="marquee-fade marquee-fade-right"></div>
+        <div style={{ overflow: 'hidden', whiteSpace: 'nowrap', width: '100%', position: 'relative', marginTop: '2rem', padding: '10px 0' }}>
+            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '100px', background: 'linear-gradient(to right, var(--bg-color), transparent)', zIndex: 2 }}></div>
+            <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: '100px', background: 'linear-gradient(to left, var(--bg-color), transparent)', zIndex: 2 }}></div>
+            
             <motion.div
-                className="marquee-track"
+                style={{ display: 'inline-flex', gap: '20px' }}
                 animate={{ x: ['0%', '-50%'] }}
-                transition={{ duration: 25, ease: 'linear', repeat: Infinity }}
+                transition={{ duration: 30, ease: 'linear', repeat: Infinity }}
             >
                 {items.map((tech, i) => (
-                    <span key={i} className="marquee-item">{tech}</span>
+                    <div key={i} className="nav-badge" style={{ fontSize: '0.9rem', fontWeight: 700, padding: '8px 16px' }}>
+                        {tech}
+                    </div>
                 ))}
             </motion.div>
         </div>

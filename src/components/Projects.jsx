@@ -1,80 +1,45 @@
-import './Projects.css';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, Server, Smartphone } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useRef, useCallback } from 'react';
 
 const ProjectCard = ({ project, index }) => {
-    const cardRef = useRef(null);
-
-    const handleMouseMove = useCallback((e) => {
-        const card = cardRef.current;
-        if (!card) return;
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -6;
-        const rotateY = ((x - centerX) / centerX) * 6;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-    }, []);
-
-    const handleMouseLeave = useCallback(() => {
-        const card = cardRef.current;
-        if (!card) return;
-        card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-    }, []);
-
     return (
         <motion.div
-            ref={cardRef}
-            className="project-card spotlight-card gradient-border"
-            initial={{ opacity: 0, y: 40 }}
+            className="neu-card"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.4, delay: Math.min(index * 0.1, 0.5) }}
             viewport={{ once: true }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ transition: 'transform 0.15s ease-out' }}
+            style={{ padding: '2rem', display: 'flex', flexDirection: 'column', height: '100%' }}
         >
-            <span className="project-number">Project 0{index + 1}</span>
-            <h3 className="project-title">{project.title}</h3>
-            <p className="project-desc">{project.description}</p>
-            <div className="project-tech">
-                {project.tech.map((tag, i) => (
-                    <motion.span
-                        key={i}
-                        className="tech-tag"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.3 + i * 0.05 }}
-                        viewport={{ once: true }}
-                    >
-                        {tag}
-                    </motion.span>
-                ))}
+            <div className="card-title">
+                {project.type || "Project"} {index + 1}
             </div>
-            <div className="project-links">
-                {project.links.github === '#' ? (
-                    <span className="project-link" style={{ cursor: 'not-allowed', opacity: 0.4 }}>
-                        <Github size={16} /> Code
-                    </span>
-                ) : (
-                    <a href={project.links.github} className="project-link" target="_blank" rel="noopener noreferrer">
-                        <Github size={16} /> Code
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '10px', color: 'var(--text-color)' }}>
+                {project.title}
+            </h3>
+            <p style={{ color: 'var(--text-light)', fontSize: '0.95rem', marginBottom: '20px', flex: 1 }}>
+                {project.description}
+            </p>
+            
+            {project.tech && (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '24px' }}>
+                    {project.tech.map((tag, i) => (
+                        <span key={i} className="nav-badge" style={{ padding: '4px 10px', fontSize: '11px', fontWeight: 700 }}>
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+            )}
+            
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: 'auto' }}>
+                {project.links?.map((link, i) => (
+                    <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" className="neu-btn" style={{ padding: '0.6rem 1rem', fontSize: '0.9rem', gap: '8px', flex: 1 }}>
+                        {link.icon === 'github' && <Github size={16} />}
+                        {link.icon === 'server' && <Server size={16} />}
+                        {link.icon === 'mobile' && <Smartphone size={16} />}
+                        {link.label}
                     </a>
-                )}
-                {project.links.live === '#' ? (
-                    <span className="project-link" style={{ cursor: 'not-allowed', opacity: 0.4 }}>
-                        <ExternalLink size={16} /> Live Demo
-                    </span>
-                ) : (
-                    <a href={project.links.live} className="project-link" target="_blank" rel="noopener noreferrer">
-                        <ExternalLink size={16} /> Live Demo
-                    </a>
-                )}
+                ))}
             </div>
         </motion.div>
     );
@@ -83,60 +48,87 @@ const ProjectCard = ({ project, index }) => {
 const Projects = () => {
     const projects = [
         {
-            title: "RAG Document Analysis Pipeline",
-            description: "Architected a two-stage Retrieval-Augmented Generation (RAG) pipeline using n8n for automated document ingestion and intelligent analysis. Processes unstructured files via OCR.",
-            tech: ["n8n", "LLM", "OCR", "Vector DB"],
-            links: { github: "https://github.com/Rao-automates/N8N-AI-Document-Processing-Chat-System", live: "#" }
+            title: "HouseMate (Main Project)",
+            description: "A comprehensive construction cost estimator and housing management platform. Includes a Kotlin XML front-end and a robust Python API backend.",
+            type: "Featured",
+            tech: ["Kotlin", "Android XML", "Python", "FastAPI"],
+            links: [
+                { label: "Frontend Repo", url: "https://github.com/Rao-automates/HouseMate-Kotlin-XML-Front-end", icon: "mobile" },
+                { label: "Backend Repo", url: "https://github.com/Rao-automates/HouseMate-Api-Backend", icon: "server" }
+            ]
         },
         {
-            title: "LinkedIn Content Automation",
-            description: "Developed an end-to-end autonomous n8n workflow for content generation, scheduling, and community engagement using LLMs to generate high-authority technical posts.",
-            tech: ["n8n", "AI Agents", "LinkedIn API"],
-            links: { github: "https://github.com/Rao-automates/LinkedIn-Content-Automation-System", live: "#" }
+            title: "LinkedIn Content Automation System",
+            description: "Automated Lead Qualification & Scheduling Workflow. An intelligent n8n workflow that automates the entire process from Google Sheets to calendar booking.",
+            tech: ["n8n", "AI", "Automation"],
+            links: [{ label: "Code", url: "https://github.com/Rao-automates/LinkedIn-Content-Automation-System", icon: "github" }]
         },
         {
-            title: "Autonomous Lead Qualification",
-            description: "Engineered an intelligent n8n workflow that automates the lead qualification process from Google Sheets to calendar booking.",
-            tech: ["n8n", "Google Sheets", "Calendar API"],
-            links: { github: "https://github.com/Rao-automates/Lead-Qualification-Scheduling-Workflow", live: "#" }
+            title: "Socket Arcade",
+            description: "A real-time multiplayer game server built with Flask and Socket.IO. Transforms your local network into a gaming party hub for seamless Wi-Fi play.",
+            tech: ["Python", "Flask", "Socket.IO"],
+            links: [{ label: "Code", url: "https://github.com/Rao-automates/Socket-Arcade-", icon: "github" }]
         },
         {
-            title: "House-Mate: Cost Estimator",
-            description: "Built a FastAPI + Firebase backend that automates construction budgeting based on real-time market data. Deployed on AWS EC2 with Docker.",
-            tech: ["FastAPI", "Firebase", "Docker", "AWS"],
-            links: { github: "https://github.com/TaskeenZehra/HouseMate-Api-Backend", live: "#" }
+            title: "Music Automaton Composer",
+            description: "A procedural melody generator built with React and Web Audio API. Uses Finite State Automata principles to generate sequences in real-time.",
+            tech: ["React", "Web Audio API", "FSA"],
+            links: [{ label: "Code", url: "https://github.com/Rao-automates/Music-Automaton-Composer", icon: "github" }]
+        },
+        {
+            title: "N8N AI Document Processing Chat",
+            description: "Two interconnected n8n workflows creating a complete RAG pipeline for document analysis and intelligent querying.",
+            tech: ["n8n", "RAG", "LLM"],
+            links: [{ label: "Code", url: "https://github.com/Rao-automates/N8N-AI-Document-Processing-Chat-System", icon: "github" }]
+        },
+        {
+            title: "DrChrono Discharge Sheet Generator",
+            description: "An n8n workflow automating patient discharge sheets from DrChrono EHR. Fetches data, generates PDF, and uploads it to the patient's chart.",
+            tech: ["n8n", "EHR", "PDF Gen"],
+            links: [{ label: "Code", url: "https://github.com/Rao-automates/DrChrono-Discharge-Sheet-Generator", icon: "github" }]
+        },
+        {
+            title: "Campus Lost And Found",
+            description: "A Python-based application helping students easily report and find lost items on campus.",
+            tech: ["Python"],
+            links: [{ label: "Code", url: "https://github.com/Rao-automates/Campus-Lost-And-Found", icon: "github" }]
+        },
+        {
+            title: "Job App Auto Responder",
+            description: "Intelligent n8n workflow that monitors Gmail for job emails, classifies them using AI, and sends personalized contextual responses.",
+            tech: ["n8n", "Gmail API", "AI"],
+            links: [{ label: "Code", url: "https://github.com/Rao-automates/N8N-Job-Application-Auto-Responder-Workflow", icon: "github" }]
+        },
+        {
+            title: "AI Powered Grocery Assistant",
+            description: "An intelligent chatbot workflow built with n8n that helps users manage their grocery lists through natural language.",
+            tech: ["n8n", "Chatbot", "AI"],
+            links: [{ label: "Code", url: "https://github.com/Rao-automates/AI-Powered-Grocery-Assistant-Workflow", icon: "github" }]
+        },
+        {
+            title: "Lead Qualification Scheduling",
+            description: "Intelligent n8n workflow automating lead qualification and meeting scheduling from Sheets to calendar confirmation.",
+            tech: ["n8n", "Automation"],
+            links: [{ label: "Code", url: "https://github.com/Rao-automates/Lead-Qualification-Scheduling-Workflow", icon: "github" }]
         }
     ];
 
     return (
-        <section id="projects" className="projects-container">
-            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                <motion.h2
-                    className="section-title"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    Featured Projects
-                </motion.h2>
-                <motion.p
-                    className="section-subtitle"
-                    style={{ margin: '0.5rem auto 0' }}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    viewport={{ once: true }}
-                >
-                    A selection of recent work in automation and backend engineering.
-                </motion.p>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', paddingTop: '1rem' }}>
+            <div className="section-header">
+                <h2>Featured Projects</h2>
+                <span className="type-badge homo">Portfolio</span>
             </div>
+            <p className="section-desc">
+                A selection of recent work in software engineering, automation workflows, and specialized backends.
+            </p>
 
-            <div className="projects-grid">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '24px' }}>
                 {projects.map((project, index) => (
                     <ProjectCard key={index} project={project} index={index} />
                 ))}
             </div>
-        </section>
+        </div>
     );
 };
 
