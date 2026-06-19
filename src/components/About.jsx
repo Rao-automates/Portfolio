@@ -92,13 +92,13 @@ const About = () => {
                         <a href="https://github.com/Rao-automates" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ justifyContent: 'center' }}>
                             GitHub
                         </a>
-                        <a href="https://linkedin.com/in/mohyuddin-rao" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ justifyContent: 'center' }}>
+                        <a href="https://www.linkedin.com/in/mohyuddin-rao-b9aa8337a" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ justifyContent: 'center' }}>
                             LinkedIn
                         </a>
-                        <a href="mailto:raomohyuddin75@gmail.com" className="neu-btn outline" style={{ justifyContent: 'center' }}>
+                        <a href="mailto:mohyuddinrao.dev@gmail.com" className="neu-btn outline" style={{ justifyContent: 'center' }}>
                             Email Me
                         </a>
-                        <a href="https://upwork.com" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ justifyContent: 'center' }}>
+                        <a href="https://www.upwork.com/freelancers/~0126577e0d5102025d" target="_blank" rel="noopener noreferrer" className="neu-btn outline" style={{ justifyContent: 'center' }}>
                             Upwork
                         </a>
                     </div>
