@@ -20,7 +20,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-                Hi, I'm <span>Mohyuddin Rao</span>
+                Hi, I'm <span className="text-gradient">Mohyuddin Rao</span>
             </motion.h1>
 
             <motion.p

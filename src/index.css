@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 :root {
-    --bg-color: #e0e5ec;
-    --text-color: #4a5568;
-    --text-light: #a0aec0;
+    --bg-color: #eef2f9;
+    --text-color: #2d3748;
+    --text-light: #718096;
     --accent: #4299e1;
     --shadow-light: #ffffff;
-    --shadow-dark: #a3b1c6;
+    --shadow-dark: #c5d3e8;
     
-    --neu-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.8);
-    --neu-inner-shadow: inset 6px 6px 10px rgba(163, 177, 198, 0.5), inset -6px -6px 10px rgba(255, 255, 255, 0.8);
+    --neu-shadow: 14px 14px 28px var(--shadow-dark), -14px -14px 28px var(--shadow-light);
+    --neu-inner-shadow: inset 8px 8px 16px var(--shadow-dark), inset -8px -8px 16px var(--shadow-light);
 
     --homo:         #00e5a0;
     --homo-soft:    rgba(0,229,160,0.12);
@@ -25,7 +25,9 @@
 }
 
 body {
-    background-color: var(--bg-color);
+    background: linear-gradient(-45deg, #eef2f9, #f5f8fc, #e5edfa, #f0f5fc);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     color: var(--text-color);
     font-family: 'Nunito', sans-serif;
     height: 100vh;
@@ -33,6 +35,19 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #4299e1 0%, #9f7aea 50%, #ed64a6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .app-container {
@@ -53,9 +68,8 @@ body {
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 800;
-    color: var(--text-color);
     letter-spacing: 1px;
     line-height: 1.1;
 }
@@ -64,7 +78,7 @@ body {
     display: flex;
     gap: 1rem;
     overflow-x: auto;
-    padding: 10px 5px;
+    padding: 15px 10px;
 }
 
 /* Hide scrollbar for nav pills */
@@ -77,12 +91,12 @@ body {
     color: var(--text-light);
     font-family: 'Nunito', sans-serif;
     font-size: 0.95rem;
-    font-weight: 700;
-    padding: 0.8rem 1.2rem;
+    font-weight: 800;
+    padding: 0.8rem 1.4rem;
     border-radius: 50px;
     cursor: pointer;
     box-shadow: var(--neu-shadow);
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -91,11 +105,14 @@ body {
 
 .nav-btn:hover {
     color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 16px 16px 32px var(--shadow-dark), -16px -16px 32px var(--shadow-light);
 }
 
 .nav-btn.active {
     color: var(--accent);
     box-shadow: var(--neu-inner-shadow);
+    transform: translateY(0);
 }
 
 .nav-num {
@@ -117,8 +134,8 @@ body {
 .nav-badge {
     font-size: 9px;
     font-weight: 800;
-    padding: 2px 6px;
-    border-radius: 4px;
+    padding: 4px 10px;
+    border-radius: 8px;
     background: var(--bg-color);
     box-shadow: var(--neu-inner-shadow);
 }
@@ -142,7 +159,7 @@ body {
     box-shadow: var(--neu-inner-shadow);
 }
 .content-area::-webkit-scrollbar-thumb {
-    background: var(--shadow-dark);
+    background: var(--accent);
     border-radius: 10px;
 }
 
@@ -197,10 +214,16 @@ body {
 /* Cards */
 .neu-card {
     background: var(--bg-color);
-    border-radius: 30px;
+    border-radius: 40px;
     padding: 2.5rem;
     box-shadow: var(--neu-shadow);
     margin-bottom: 2rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neu-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 20px 20px 40px var(--shadow-dark), -20px -20px 40px var(--shadow-light);
 }
 
 .card-title {
@@ -293,14 +316,14 @@ body {
     background: var(--bg-color);
     border: none;
     padding: 1rem 1.5rem;
-    border-radius: 15px;
+    border-radius: 20px;
     font-family: 'Nunito', sans-serif;
     font-size: 1.1rem;
     font-weight: 800;
     color: var(--text-color);
     cursor: pointer;
     box-shadow: var(--neu-shadow);
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -313,9 +336,18 @@ body {
     border-radius: 50%;
 }
 
+.neu-btn:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #4299e1 0%, #9f7aea 100%);
+    box-shadow: 0 15px 30px rgba(159, 122, 234, 0.4);
+    transform: translateY(-4px);
+}
+
 .neu-btn:active, .neu-btn.active {
+    background: var(--bg-color);
     box-shadow: var(--neu-inner-shadow);
     color: var(--accent);
+    transform: translateY(0);
 }
 
 .playback-time {

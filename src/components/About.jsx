@@ -24,7 +24,7 @@ const About = () => {
                         alt="Mohyuddin Rao" 
                         style={{ width: '200px', height: '200px', borderRadius: '50%', objectFit: 'cover', boxShadow: 'var(--neu-shadow)', marginBottom: '20px' }} 
                     />
-                    <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-color)' }}>Mohyuddin Rao</h3>
+                    <h3 className="text-gradient" style={{ fontSize: '1.6rem', fontWeight: 800, marginBottom: '8px' }}>Mohyuddin Rao</h3>
                     <p style={{ color: 'var(--text-light)', fontWeight: 600 }}>Computer Science Student</p>
                     <p style={{ color: 'var(--accent)', fontWeight: 800 }}>PAF-KIET (3.53 GPA)</p>
                 </motion.div>
