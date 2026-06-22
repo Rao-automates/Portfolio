@@ -111,6 +111,24 @@ const Projects = () => {
             description: "Intelligent n8n workflow automating lead qualification and meeting scheduling from Sheets to calendar confirmation.",
             tech: ["n8n", "Automation"],
             links: [{ label: "Repository", url: "https://github.com/Rao-automates/Lead-Qualification-Scheduling-Workflow", icon: "github" }]
+        },
+        {
+            title: "FlowPlan",
+            description: "Industrial-Grade Project Management Suite. Features a robust workspace architecture for managing sprints, databases, and canvases.",
+            tech: ["Kotlin", "Android", "Jetpack Compose"],
+            links: [{ label: "Repository", url: "https://github.com/Rao-automates/FlowPlan", icon: "github" }]
+        },
+        {
+            title: "IQ-Warp",
+            description: "A cognitive training game with various domains and levels, featuring Room database and Jetpack Compose UI.",
+            tech: ["Kotlin", "Android", "Jetpack Compose"],
+            links: [{ label: "Repository", url: "https://github.com/Rao-automates/IQ-Warp", icon: "github" }]
+        },
+        {
+            title: "Jobber",
+            description: "Next-Gen Job Search Aggregator & Application Tracker.",
+            tech: ["TypeScript", "Web"],
+            links: [{ label: "Repository", url: "https://github.com/Rao-automates/jobber", icon: "github" }]
         }
     ];
 
