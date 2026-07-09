@@ -1,8 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 
-// Smooth easeOutExpo counter via rAF
-const StatItem = ({ value, suffix, label, delay, bentoClass }) => {
+const StatItem = ({ value, suffix, label, delay, bentoClass, decimals = 0 }) => {
     const ref = useRef(null);
     const numRef = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-50px' });
@@ -12,12 +11,9 @@ const StatItem = ({ value, suffix, label, delay, bentoClass }) => {
         if (!isInView || hasAnimated.current || !numRef.current) return;
         hasAnimated.current = true;
 
-        const isDecimal = suffix === '.5';
-        const end = value;
         const duration = 1800;
         const delayMs = delay * 1000;
         let startTime = null;
-
         const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
         const step = (timestamp) => {
@@ -25,18 +21,16 @@ const StatItem = ({ value, suffix, label, delay, bentoClass }) => {
             if (timestamp < startTime) { requestAnimationFrame(step); return; }
             const elapsed = timestamp - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            const current = (end) * easeOutExpo(progress);
-
+            const current = value * easeOutExpo(progress);
             if (numRef.current) {
-                numRef.current.textContent = isDecimal
-                    ? current.toFixed(1)
+                numRef.current.textContent = decimals > 0
+                    ? current.toFixed(decimals)
                     : Math.floor(current).toString();
             }
             if (progress < 1) requestAnimationFrame(step);
         };
-
         requestAnimationFrame(step);
-    }, [isInView, value, suffix, delay]);
+    }, [isInView, value, suffix, delay, decimals]);
 
     return (
         <motion.div
@@ -47,7 +41,7 @@ const StatItem = ({ value, suffix, label, delay, bentoClass }) => {
             transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
         >
             <span style={{ fontSize: '3.5rem', fontWeight: 900, color: 'var(--text-color)', lineHeight: 1, marginBottom: '8px', display: 'block' }}>
-                <span ref={numRef}>{suffix === '.5' ? '0.0' : '0'}</span>
+                <span ref={numRef}>{decimals > 0 ? (0).toFixed(decimals) : '0'}</span>
                 <span style={{ color: 'var(--accent)' }}>{suffix}</span>
             </span>
             <span style={{ color: 'var(--text-light)', fontWeight: 600, fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
@@ -59,10 +53,10 @@ const StatItem = ({ value, suffix, label, delay, bentoClass }) => {
 
 const Stats = () => {
     const stats = [
-        { value: 20, suffix: '+', label: 'Projects Delivered', bentoClass: 'bento-wide' },
-        { value: 5, suffix: '+', label: 'Automation Pipelines', bentoClass: '' },
-        { value: 30, suffix: '%', label: 'Efficiency Gained', bentoClass: '' },
-        { value: 3, suffix: '.5', label: 'GPA at PAF-KIET', bentoClass: 'bento-wide' },
+        { value: 20, suffix: '+',  label: 'Projects Delivered',   bentoClass: 'bento-wide', decimals: 0 },
+        { value: 5,  suffix: '+',  label: 'Automation Pipelines',  bentoClass: '',           decimals: 0 },
+        { value: 30, suffix: '%',  label: 'Efficiency Gained',     bentoClass: '',           decimals: 0 },
+        { value: 3.5,suffix: '',   label: 'GPA at PAF-KIET',       bentoClass: 'bento-wide', decimals: 1 },
     ];
 
     return (

@@ -429,4 +429,117 @@ body::after {
 @keyframes scanMove {
     0% { background-position: 0 0; }
     100% { background-position: 0 100px; }
-}
+}
+
+/* ── Hero Status Row ── */
+.hero-status-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.status-chip {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #555;
+    border: 1px solid #222;
+    padding: 5px 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s;
+}
+.status-chip.online { color: #4ade80; border-color: rgba(74,222,128,0.3); }
+.status-chip.accent { color: var(--accent); border-color: rgba(204,255,0,0.3); }
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    animation: statusPulse 1.5s ease-in-out infinite;
+}
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 6px #4ade80; }
+    50%       { opacity: 0.4; box-shadow: none; }
+}
+
+/* ── Typewriter ── */
+.hero-typewriter {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    min-height: 1.8em;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+.hero-prompt {
+    color: var(--accent);
+    margin-right: 8px;
+    font-weight: 700;
+}
+
+/* ── Holographic section header ── */
+.section-header h2 {
+    position: relative;
+    display: inline-block;
+}
+.section-header h2::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0; top: 0;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(204,255,0,0.15) 40%,
+        rgba(249,115,22,0.1) 60%,
+        transparent 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: holoShimmer 4s linear infinite;
+    pointer-events: none;
+}
+@keyframes holoShimmer {
+    0%   { background-position: 200% center; }
+    100% { background-position: -200% center; }
+}
+
+/* ── Spinning conic-gradient border on bento items ── */
+.bento-item {
+    position: relative;
+}
+.bento-item::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: conic-gradient(from var(--angle, 0deg), transparent 80%, rgba(204,255,0,0.4) 90%, transparent 100%);
+    border-radius: inherit;
+    z-index: -1;
+    animation: spinBorder 6s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.bento-item:hover::before { opacity: 1; }
+@property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@keyframes spinBorder { to { --angle: 360deg; } }
+
+/* ── Glowing neon underline on nav ── */
+.top-nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(204,255,0,0.3), transparent);
+    animation: navGlow 3s ease-in-out infinite;
+}
+@keyframes navGlow {
+    0%, 100% { opacity: 0.4; }
+    50%       { opacity: 1; }
+}
+

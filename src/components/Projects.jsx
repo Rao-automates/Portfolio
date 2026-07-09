@@ -1,65 +1,9 @@
 import { useRef } from 'react';
 import { Github, ExternalLink, Server, Smartphone } from 'lucide-react';
 import { motion, useInView } from 'motion/react';
-import { useSpring, animated } from '@react-spring/web';
+import HoloCard from './HoloCard';
 
-// 3D tilt card powered by React Spring
-const TiltCard = ({ children, className, style }) => {
-    const cardRef = useRef(null);
-    const [springs, api] = useSpring(() => ({
-        rotateX: 0,
-        rotateY: 0,
-        scale: 1,
-        glare: 0,
-        config: { mass: 1, tension: 200, friction: 20 }
-    }));
 
-    const handleMove = (e) => {
-        const rect = cardRef.current.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const y = (e.clientY - rect.top) / rect.height;
-        api.start({
-            rotateX: (y - 0.5) * -14,
-            rotateY: (x - 0.5) * 14,
-            scale: 1.02,
-            glare: x,
-        });
-    };
-
-    const handleLeave = () => api.start({ rotateX: 0, rotateY: 0, scale: 1, glare: 0.5 });
-
-    return (
-        <animated.div
-            ref={cardRef}
-            className={className}
-            style={{
-                ...style,
-                transformStyle: 'preserve-3d',
-                rotateX: springs.rotateX,
-                rotateY: springs.rotateY,
-                scale: springs.scale,
-                position: 'relative',
-                overflow: 'hidden',
-            }}
-            onMouseMove={handleMove}
-            onMouseLeave={handleLeave}
-        >
-            {/* Glare overlay */}
-            <animated.div style={{
-                position: 'absolute',
-                inset: 0,
-                background: springs.glare.to(g =>
-                    `radial-gradient(circle at ${g * 100}% 50%, rgba(204,255,0,0.06), transparent 60%)`
-                ),
-                pointerEvents: 'none',
-                zIndex: 1,
-            }} />
-            <div style={{ position: 'relative', zIndex: 2, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                {children}
-            </div>
-        </animated.div>
-    );
-};
 
 // Motion.dev scroll reveal wrapper
 const ScrollReveal = ({ children, index }) => {
@@ -85,7 +29,7 @@ const ScrollReveal = ({ children, index }) => {
 const ProjectCard = ({ project, index }) => {
     return (
         <ScrollReveal index={index}>
-            <TiltCard className="project-card">
+            <HoloCard className="project-card">
                 <div>
                     <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '15px' }}>
                         {project.type || `Project 0${index + 1}`}
@@ -118,7 +62,7 @@ const ProjectCard = ({ project, index }) => {
                         </a>
                     ))}
                 </div>
-            </TiltCard>
+            </HoloCard>
         </ScrollReveal>
     );
 };
