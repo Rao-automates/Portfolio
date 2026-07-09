@@ -72,7 +72,7 @@ const Terminal = () => {
                 onClick={() => setIsOpen(true)}
                 style={{ display: isOpen ? 'none' : 'flex' }}
             >
-        >_ TERMINAL
+            &gt;_ TERMINAL
             </button>
 
             <AnimatePresence>

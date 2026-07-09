@@ -1,48 +1,125 @@
+import { useRef } from 'react';
 import { Github, ExternalLink, Server, Smartphone } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'motion/react';
+import { useSpring, animated } from '@react-spring/web';
+
+// 3D tilt card powered by React Spring
+const TiltCard = ({ children, className, style }) => {
+    const cardRef = useRef(null);
+    const [springs, api] = useSpring(() => ({
+        rotateX: 0,
+        rotateY: 0,
+        scale: 1,
+        glare: 0,
+        config: { mass: 1, tension: 200, friction: 20 }
+    }));
+
+    const handleMove = (e) => {
+        const rect = cardRef.current.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        api.start({
+            rotateX: (y - 0.5) * -14,
+            rotateY: (x - 0.5) * 14,
+            scale: 1.02,
+            glare: x,
+        });
+    };
+
+    const handleLeave = () => api.start({ rotateX: 0, rotateY: 0, scale: 1, glare: 0.5 });
+
+    return (
+        <animated.div
+            ref={cardRef}
+            className={className}
+            style={{
+                ...style,
+                transformStyle: 'preserve-3d',
+                rotateX: springs.rotateX,
+                rotateY: springs.rotateY,
+                scale: springs.scale,
+                position: 'relative',
+                overflow: 'hidden',
+            }}
+            onMouseMove={handleMove}
+            onMouseLeave={handleLeave}
+        >
+            {/* Glare overlay */}
+            <animated.div style={{
+                position: 'absolute',
+                inset: 0,
+                background: springs.glare.to(g =>
+                    `radial-gradient(circle at ${g * 100}% 50%, rgba(204,255,0,0.06), transparent 60%)`
+                ),
+                pointerEvents: 'none',
+                zIndex: 1,
+            }} />
+            <div style={{ position: 'relative', zIndex: 2, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                {children}
+            </div>
+        </animated.div>
+    );
+};
+
+// Motion.dev scroll reveal wrapper
+const ScrollReveal = ({ children, index }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: '-60px' });
+
+    return (
+        <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 60, filter: 'blur(6px)' }}
+            animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+            transition={{
+                duration: 0.7,
+                delay: (index % 2) * 0.15,
+                ease: [0.16, 1, 0.3, 1],
+            }}
+        >
+            {children}
+        </motion.div>
+    );
+};
 
 const ProjectCard = ({ project, index }) => {
     return (
-        <motion.div
-            className="project-card"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true, margin: "-50px" }}
-        >
-            <div>
-                <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '15px' }}>
-                    {project.type || `Project 0${index + 1}`}
-                </div>
-                <h3 className="card-title">
-                    {project.title}
-                </h3>
-                <p style={{ color: 'var(--text-light)', fontSize: '1.1rem', marginBottom: '30px', lineHeight: 1.6 }}>
-                    {project.description}
-                </p>
-                
-                {project.tech && (
-                    <div className="badge-group">
-                        {project.tech.map((tag, i) => (
-                            <span key={i} className="type-badge">
-                                {tag}
-                            </span>
-                        ))}
+        <ScrollReveal index={index}>
+            <TiltCard className="project-card">
+                <div>
+                    <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-light)', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '15px' }}>
+                        {project.type || `Project 0${index + 1}`}
                     </div>
-                )}
-            </div>
-            
-            <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', marginTop: '40px' }}>
-                {project.links?.map((link, i) => (
-                    <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" className={`neu-btn ${i > 0 ? 'outline' : ''}`} style={{ flex: 1 }}>
-                        {link.icon === 'github' && <Github size={18} />}
-                        {link.icon === 'server' && <Server size={18} />}
-                        {link.icon === 'mobile' && <Smartphone size={18} />}
-                        {link.label}
-                    </a>
-                ))}
-            </div>
-        </motion.div>
+                    <h3 className="card-title">
+                        {project.title}
+                    </h3>
+                    <p style={{ color: 'var(--text-light)', fontSize: '1.1rem', marginBottom: '30px', lineHeight: 1.6 }}>
+                        {project.description}
+                    </p>
+
+                    {project.tech && (
+                        <div className="badge-group">
+                            {project.tech.map((tag, i) => (
+                                <span key={i} className="type-badge">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    )}
+                </div>
+
+                <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', marginTop: '40px' }}>
+                    {project.links?.map((link, i) => (
+                        <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" className={`neu-btn ${i > 0 ? 'outline' : ''}`} style={{ flex: 1 }}>
+                            {link.icon === 'github' && <Github size={18} />}
+                            {link.icon === 'server' && <Server size={18} />}
+                            {link.icon === 'mobile' && <Smartphone size={18} />}
+                            {link.label}
+                        </a>
+                    ))}
+                </div>
+            </TiltCard>
+        </ScrollReveal>
     );
 };
 

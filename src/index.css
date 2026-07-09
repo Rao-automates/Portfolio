@@ -333,6 +333,43 @@ body::before {
 ::-webkit-scrollbar-thumb { background: #333; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
+/* Scroll Progress Bar */
+.scroll-progress-track {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: transparent;
+    z-index: 9998;
+    pointer-events: none;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, var(--accent), var(--nonhomo));
+    box-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
+    transition: width 0.05s linear;
+}
+
+/* Active nav link */
+.nav-link-active {
+    color: var(--text-color) !important;
+    position: relative;
+}
+
+.nav-link-active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    box-shadow: 0 0 8px rgba(204, 255, 0, 0.6);
+}
+
 /* Responsive Grid */
 @media (max-width: 1100px) {
     .bento-grid { grid-template-columns: repeat(2, 1fr); }
@@ -347,3 +384,49 @@ body::before {
     .top-nav { padding: 1.5rem; flex-direction: column; gap: 20px; }
     .hero h1 { letter-spacing: -1px; }
 }
+
+/* Typewriter cursor */
+.hero-cursor {
+    display: inline-block;
+    color: var(--accent);
+    animation: blink 0.9s step-end infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Neon border flicker on project cards */
+@keyframes borderFlicker {
+    0%, 98%, 100% { border-color: var(--border-color); }
+    99% { border-color: var(--accent); box-shadow: 0 0 16px rgba(204,255,0,0.3); }
+}
+
+.project-card {
+    animation: borderFlicker 8s ease-in-out infinite;
+    animation-delay: var(--card-delay, 0s);
+}
+
+/* Scanline overlay on the whole page */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.08) 2px,
+        rgba(0, 0, 0, 0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 9990;
+    animation: scanMove 6s linear infinite;
+}
+
+@keyframes scanMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100px; }
+}
