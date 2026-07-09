@@ -1,49 +1,83 @@
-import { useEffect, useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
+/**
+ * CursorTrail — single canvas, zero React re-renders.
+ * Stores trail points in a ring buffer and fades them out manually.
+ */
 const CursorTrail = () => {
-    const [trails, setTrails] = useState([]);
-    const idCounter = useRef(0);
+    const canvasRef = useRef(null);
 
     useEffect(() => {
-        const handleMove = (e) => {
-            const id = idCounter.current++;
-            setTrails(prev => [...prev.slice(-15), { id, x: e.clientX, y: e.clientY }]);
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let raf;
+
+        const resize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+
+        // Ring buffer of trail points
+        const MAX = 18;
+        const trail = [];
+        let mouse = { x: -999, y: -999 };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            trail.push({ x: e.clientX, y: e.clientY, age: 0 });
+            if (trail.length > MAX) trail.shift();
+        }, { passive: true });
+
+        const draw = () => {
+            raf = requestAnimationFrame(draw);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < trail.length; i++) {
+                trail[i].age++;
+                const ratio = i / trail.length;
+                const alpha = ratio * 0.7 * (1 - trail[i].age / 60);
+                if (alpha <= 0) continue;
+
+                const size = 2 + ratio * 7;
+                const isSquare = ratio < 0.4;
+
+                ctx.globalAlpha = alpha;
+                ctx.shadowColor = '#ccff00';
+                ctx.shadowBlur = ratio * 8;
+                ctx.fillStyle = `rgba(204,255,0,${0.6 + ratio * 0.4})`;
+
+                if (isSquare) {
+                    ctx.fillRect(trail[i].x - size / 2, trail[i].y - size / 2, size, size);
+                } else {
+                    ctx.beginPath();
+                    ctx.arc(trail[i].x, trail[i].y, size / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            // Remove old points
+            while (trail.length && trail[0].age > 55) trail.shift();
+
+            ctx.globalAlpha = 1;
+            ctx.shadowBlur = 0;
         };
 
-        window.addEventListener('mousemove', handleMove);
-        return () => window.removeEventListener('mousemove', handleMove);
+        raf = requestAnimationFrame(draw);
+
+        return () => {
+            cancelAnimationFrame(raf);
+            window.removeEventListener('resize', resize);
+        };
     }, []);
 
     return (
-        <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 9997 }}>
-            <AnimatePresence>
-                {trails.map((t, i) => {
-                    const ratio = i / trails.length;
-                    const size = 4 + ratio * 8;
-                    return (
-                        <motion.div
-                            key={t.id}
-                            initial={{ opacity: 0.9, scale: 1 }}
-                            animate={{ opacity: 0, scale: 0.2 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.6, ease: 'easeOut' }}
-                            style={{
-                                position: 'absolute',
-                                left: t.x - size / 2,
-                                top: t.y - size / 2,
-                                width: size,
-                                height: size,
-                                borderRadius: ratio > 0.7 ? '50%' : '2px',
-                                background: `rgba(204, 255, 0, ${0.15 + ratio * 0.5})`,
-                                boxShadow: `0 0 ${6 + ratio * 10}px rgba(204, 255, 0, ${ratio * 0.4})`,
-                                transform: `rotate(${ratio * 45}deg)`,
-                            }}
-                        />
-                    );
-                })}
-            </AnimatePresence>
-        </div>
+        <canvas ref={canvasRef} style={{
+            position: 'fixed', inset: 0, zIndex: 9997, pointerEvents: 'none'
+        }} />
     );
 };
 

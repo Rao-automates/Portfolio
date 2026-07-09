@@ -398,18 +398,13 @@ body::before {
     50% { opacity: 0; }
 }
 
-/* Neon border flicker on project cards */
-@keyframes borderFlicker {
-    0%, 98%, 100% { border-color: var(--border-color); }
-    99% { border-color: var(--accent); box-shadow: 0 0 16px rgba(204,255,0,0.3); }
+/* Neon accent on project card hover — static, no animation */
+.project-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(204,255,0,0.08);
 }
 
-.project-card {
-    animation: borderFlicker 8s ease-in-out infinite;
-    animation-delay: var(--card-delay, 0s);
-}
-
-/* Scanline overlay on the whole page */
+/* Static scanline texture — no animation, GPU-friendly */
 body::after {
     content: '';
     position: fixed;
@@ -417,18 +412,12 @@ body::after {
     background: repeating-linear-gradient(
         0deg,
         transparent,
-        transparent 2px,
-        rgba(0, 0, 0, 0.08) 2px,
-        rgba(0, 0, 0, 0.08) 4px
+        transparent 3px,
+        rgba(0, 0, 0, 0.06) 3px,
+        rgba(0, 0, 0, 0.06) 4px
     );
     pointer-events: none;
     z-index: 9990;
-    animation: scanMove 6s linear infinite;
-}
-
-@keyframes scanMove {
-    0% { background-position: 0 0; }
-    100% { background-position: 0 100px; }
 }
 
 /* ── Hero Status Row ── */
@@ -510,24 +499,12 @@ body::after {
     100% { background-position: -200% center; }
 }
 
-/* ── Spinning conic-gradient border on bento items ── */
-.bento-item {
-    position: relative;
+/* Bento border glow on hover — no spinning gradient */
+.bento-item::before { display: none; }
+.bento-item:hover {
+    border-color: rgba(204,255,0,0.2);
+    box-shadow: inset 0 0 20px rgba(204,255,0,0.03);
 }
-.bento-item::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    background: conic-gradient(from var(--angle, 0deg), transparent 80%, rgba(204,255,0,0.4) 90%, transparent 100%);
-    border-radius: inherit;
-    z-index: -1;
-    animation: spinBorder 6s linear infinite;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-.bento-item:hover::before { opacity: 1; }
-@property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
-@keyframes spinBorder { to { --angle: 360deg; } }
 
 /* ── Glowing neon underline on nav ── */
 .top-nav::after {

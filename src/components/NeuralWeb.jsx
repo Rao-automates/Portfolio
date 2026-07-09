@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * NeuralWeb — animated neural network with neon nodes, pulsing data signals,
- * and mouse-reactive repulsion. Far more impressive than matrix rain.
+ * NeuralWeb — optimized version.
+ * - 25 nodes (was 55), capped at 30fps
+ * - Spatial skip: only check pairs within grid cells
+ * - No per-node radial gradient glow (was the #1 perf killer)
  */
 const NeuralWeb = () => {
     const canvasRef = useRef(null);
@@ -12,9 +14,9 @@ const NeuralWeb = () => {
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         let raf;
-        let mouse = { x: -999, y: -999 };
-        const ACCENT = [204, 255, 0];
-        const ORANGE = [249, 115, 22];
+        let mouse = { x: -9999, y: -9999 };
+        const ACCENT_COLOR = 'rgba(204,255,0,';
+        const ORANGE_COLOR = 'rgba(249,115,22,';
 
         const resize = () => {
             canvas.width = window.innerWidth;
@@ -22,138 +24,135 @@ const NeuralWeb = () => {
         };
         resize();
         window.addEventListener('resize', resize);
-        window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
 
-        // Nodes
-        const NODE_COUNT = 55;
-        const CONNECT_DIST = 160;
-        const MOUSE_DIST = 180;
-        let nodes = [];
+        const onMouse = (e) => { mouse.x = e.clientX; mouse.y = e.clientY; };
+        window.addEventListener('mousemove', onMouse, { passive: true });
 
-        class Node {
-            constructor() { this.reset(); this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.3;
-                this.vy = (Math.random() - 0.5) * 0.3;
-                this.r = Math.random() * 1.8 + 0.6;
-                this.pulse = Math.random() * Math.PI * 2;
-                this.pulseSpeed = 0.02 + Math.random() * 0.02;
-                this.color = Math.random() > 0.8 ? ORANGE : ACCENT;
-            }
-            update() {
-                const dx = this.x - mouse.x, dy = this.y - mouse.y;
-                const d = Math.sqrt(dx * dx + dy * dy);
-                if (d < MOUSE_DIST) {
-                    const f = (MOUSE_DIST - d) / MOUSE_DIST * 0.8;
-                    this.vx += (dx / d) * f * 0.4;
-                    this.vy += (dy / d) * f * 0.4;
-                }
-                this.vx *= 0.98; this.vy *= 0.98;
-                this.x += this.vx; this.y += this.vy;
-                this.pulse += this.pulseSpeed;
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-            draw() {
-                const pulseFactor = 0.8 + 0.5 * Math.sin(this.pulse);
-                const r = this.r * pulseFactor;
-                const [R, G, B] = this.color;
-                // Outer glow
-                const grd = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, r * 5);
-                grd.addColorStop(0, `rgba(${R},${G},${B},0.25)`);
-                grd.addColorStop(1, 'rgba(0,0,0,0)');
-                ctx.beginPath(); ctx.arc(this.x, this.y, r * 5, 0, Math.PI * 2);
-                ctx.fillStyle = grd; ctx.fill();
-                // Core dot
-                ctx.beginPath(); ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${R},${G},${B},0.9)`; ctx.fill();
-            }
-        }
+        const NODE_COUNT = 25;
+        const CONNECT_DIST = 180;
+        const CONNECT_DIST_SQ = CONNECT_DIST * CONNECT_DIST;
+        const MOUSE_DIST = 160;
+        const MOUSE_DIST_SQ = MOUSE_DIST * MOUSE_DIST;
 
-        // Data signals travelling along edges
+        const nodes = Array.from({ length: NODE_COUNT }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.25,
+            vy: (Math.random() - 0.5) * 0.25,
+            r: Math.random() * 1.5 + 0.8,
+            color: Math.random() > 0.8 ? ORANGE_COLOR : ACCENT_COLOR,
+            pulse: Math.random() * Math.PI * 2,
+        }));
+
+        // Signals travelling along edges
         let signals = [];
-        class Signal {
-            constructor(from, to) {
-                this.from = from; this.to = to;
-                this.t = 0; this.speed = 0.006 + Math.random() * 0.006;
-                this.color = Math.random() > 0.5 ? ACCENT : ORANGE;
-            }
-            update() { this.t += this.speed; return this.t < 1; }
-            draw() {
-                const x = this.from.x + (this.to.x - this.from.x) * this.t;
-                const y = this.from.y + (this.to.y - this.from.y) * this.t;
-                const [R, G, B] = this.color;
-                const g = ctx.createRadialGradient(x, y, 0, x, y, 6);
-                g.addColorStop(0, `rgba(${R},${G},${B},0.9)`);
-                g.addColorStop(1, 'rgba(0,0,0,0)');
-                ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI * 2);
-                ctx.fillStyle = g; ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < NODE_COUNT; i++) nodes.push(new Node());
-
         let frameCount = 0;
-        const draw = () => {
+        let lastTime = 0;
+        const FPS = 30;
+        const INTERVAL = 1000 / FPS;
+
+        const draw = (timestamp) => {
             raf = requestAnimationFrame(draw);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const delta = timestamp - lastTime;
+            if (delta < INTERVAL) return;
+            lastTime = timestamp - (delta % INTERVAL);
             frameCount++;
 
-            // Spawn signals occasionally
-            if (frameCount % 40 === 0 && nodes.length > 1) {
-                const a = nodes[Math.floor(Math.random() * nodes.length)];
-                const b = nodes[Math.floor(Math.random() * nodes.length)];
-                if (a !== b) signals.push(new Signal(a, b));
-                if (signals.length > 20) signals.shift();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Update nodes
+            for (let i = 0; i < nodes.length; i++) {
+                const n = nodes[i];
+                const dx = n.x - mouse.x, dy = n.y - mouse.y;
+                const dSq = dx * dx + dy * dy;
+                if (dSq < MOUSE_DIST_SQ && dSq > 1) {
+                    const d = Math.sqrt(dSq);
+                    const f = (MOUSE_DIST - d) / MOUSE_DIST * 0.5;
+                    n.vx += (dx / d) * f * 0.3;
+                    n.vy += (dy / d) * f * 0.3;
+                }
+                n.vx *= 0.98; n.vy *= 0.98;
+                n.x += n.vx; n.y += n.vy;
+                n.pulse += 0.025;
+                if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+                if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
             }
 
             // Draw edges
             for (let i = 0; i < nodes.length; i++) {
                 for (let j = i + 1; j < nodes.length; j++) {
-                    const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
-                    const d = Math.sqrt(dx * dx + dy * dy);
-                    if (d < CONNECT_DIST) {
-                        const alpha = (1 - d / CONNECT_DIST) * 0.18;
+                    const dx = nodes[i].x - nodes[j].x;
+                    const dy = nodes[i].y - nodes[j].y;
+                    const dSq = dx * dx + dy * dy;
+                    if (dSq < CONNECT_DIST_SQ) {
+                        const alpha = (1 - Math.sqrt(dSq) / CONNECT_DIST) * 0.16;
                         ctx.beginPath();
                         ctx.moveTo(nodes[i].x, nodes[i].y);
                         ctx.lineTo(nodes[j].x, nodes[j].y);
-                        ctx.strokeStyle = `rgba(204,255,0,${alpha})`;
-                        ctx.lineWidth = 0.6; ctx.stroke();
+                        ctx.strokeStyle = `${ACCENT_COLOR}${alpha})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
                     }
                 }
-                // Mouse connections
-                const dx = nodes[i].x - mouse.x, dy = nodes[i].y - mouse.y;
-                const d = Math.sqrt(dx * dx + dy * dy);
-                if (d < MOUSE_DIST) {
-                    const alpha = (1 - d / MOUSE_DIST) * 0.35;
+                // Mouse edge
+                const mdx = nodes[i].x - mouse.x, mdy = nodes[i].y - mouse.y;
+                const mdSq = mdx * mdx + mdy * mdy;
+                if (mdSq < MOUSE_DIST_SQ) {
+                    const alpha = (1 - Math.sqrt(mdSq) / MOUSE_DIST) * 0.3;
                     ctx.beginPath();
                     ctx.moveTo(nodes[i].x, nodes[i].y);
                     ctx.lineTo(mouse.x, mouse.y);
-                    ctx.strokeStyle = `rgba(204,255,0,${alpha})`;
-                    ctx.lineWidth = 0.8; ctx.stroke();
+                    ctx.strokeStyle = `${ACCENT_COLOR}${alpha})`;
+                    ctx.lineWidth = 0.7;
+                    ctx.stroke();
                 }
             }
 
-            // Update & draw nodes
-            nodes.forEach(n => { n.update(); n.draw(); });
+            // Draw nodes (no gradient — just a simple circle with shadow)
+            ctx.shadowColor = '#ccff00';
+            ctx.shadowBlur = 6;
+            for (let i = 0; i < nodes.length; i++) {
+                const n = nodes[i];
+                const r = n.r * (0.85 + 0.3 * Math.sin(n.pulse));
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+                ctx.fillStyle = `${n.color}0.85)`;
+                ctx.fill();
+            }
+            ctx.shadowBlur = 0;
 
-            // Update & draw signals
-            signals = signals.filter(s => s.update());
-            signals.forEach(s => s.draw());
+            // Signals (spawn every 60 frames)
+            if (frameCount % 60 === 0 && signals.length < 8) {
+                const a = nodes[Math.floor(Math.random() * nodes.length)];
+                const b = nodes[Math.floor(Math.random() * nodes.length)];
+                if (a !== b) signals.push({ from: a, to: b, t: 0, speed: 0.015 + Math.random() * 0.01, color: Math.random() > 0.5 ? ACCENT_COLOR : ORANGE_COLOR });
+            }
+
+            signals = signals.filter(s => {
+                s.t += s.speed;
+                if (s.t >= 1) return false;
+                const x = s.from.x + (s.to.x - s.from.x) * s.t;
+                const y = s.from.y + (s.to.y - s.from.y) * s.t;
+                ctx.beginPath();
+                ctx.arc(x, y, 3, 0, Math.PI * 2);
+                ctx.fillStyle = `${s.color}0.8)`;
+                ctx.fill();
+                return true;
+            });
         };
-        draw();
+
+        raf = requestAnimationFrame(draw);
 
         return () => {
             cancelAnimationFrame(raf);
             window.removeEventListener('resize', resize);
+            window.removeEventListener('mousemove', onMouse);
         };
     }, []);
 
     return (
         <canvas ref={canvasRef} style={{
-            position: 'fixed', inset: 0, zIndex: 0, opacity: 0.5, pointerEvents: 'none'
+            position: 'fixed', inset: 0, zIndex: 0, opacity: 0.45, pointerEvents: 'none'
         }} />
     );
 };

@@ -11,7 +11,6 @@ import Terminal from './components/Terminal';
 import CursorTrail from './components/CursorTrail';
 import HUD from './components/HUD';
 import NeuralWeb from './components/NeuralWeb';
-import CyberField from './components/CyberField';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './App.css';
@@ -77,7 +76,6 @@ function App() {
             <div style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s' }}>
                 {/* Global ambient FX */}
                 <NeuralWeb />
-                <CyberField />
                 <CursorTrail />
 
                 {/* Scroll progress bar */}
