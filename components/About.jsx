@@ -26,6 +26,7 @@ export function About() {
           {/* Profile Card */}
           <div className="col-span-1 border border-white/20 p-8 flex flex-col items-center justify-center text-center group hover:bg-white text-white hover:text-black transition-all duration-500 relative overflow-hidden">
             <div className="w-48 h-48 rounded-none overflow-hidden mb-8 saturate-0 group-hover:saturate-100 transition-all duration-700 relative z-10 border border-current">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/profile_new.jpg" alt="Mohyuddin Rao" className="w-full h-full object-cover" />
             </div>
             <h3 className="text-2xl font-display font-bold uppercase mb-2 relative z-10 tracking-tight">Mohyuddin Rao</h3>
@@ -68,7 +69,7 @@ export function About() {
           <div className="col-span-1 md:col-span-3 border border-white/20 p-8 mt-2">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="text-center md:text-left">
-                <h3 className="text-2xl font-display font-bold uppercase tracking-tight mb-2 text-white">Let's Build Something</h3>
+                <h3 className="text-2xl font-display font-bold uppercase tracking-tight mb-2 text-white">Let&apos;s Build Something</h3>
                 <p className="text-neutral-500 text-sm font-mono uppercase tracking-widest">Available for freelance opportunities</p>
               </div>
               <div className="flex flex-wrap justify-center gap-4">
