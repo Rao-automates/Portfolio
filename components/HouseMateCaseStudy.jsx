@@ -89,6 +89,7 @@ export function HouseMateCaseStudy() {
                   <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
                  Built entirely from scratch on Android's Canvas API with zero third-party libraries. Homeowners can draw walls, rooms, doors, and stairs with live SBCA COS limit overlays. Features an automated compliance engine that verifies against KB&TPR 2002 regulations and exports straight to PDF.
                </p>
+               </div>
             </div>
             <div className="w-full lg:w-1/2 relative group">
                <div className="absolute inset-0 bg-emerald-500/20 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -122,6 +123,7 @@ export function HouseMateCaseStudy() {
                   <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
                  Select a floor plan, enter budget and floor count, and receive a full material BOQ (blocks, cement, steel, plumbing) broken across 3 quality tiers.
                </p>
+               </div>
             </div>
          </div>
 
@@ -137,6 +139,7 @@ export function HouseMateCaseStudy() {
                   <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
                  Homeowners post projects. Contractors receive push notifications, browse listings, and submit competitive bids. Private chat unlocks upon acceptance.
                </p>
+               </div>
             </div>
             <div className="w-full lg:w-1/2 relative group">
                <div className="absolute inset-0 bg-purple-500/20 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -170,6 +173,7 @@ export function HouseMateCaseStudy() {
                   <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
                  Powered by Firebase Cloud Messaging. New bids, messages, and project alerts are delivered instantly with live unread badges across the platform.
                </p>
+               </div>
             </div>
          </div>
 
@@ -185,6 +189,7 @@ export function HouseMateCaseStudy() {
                   <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
                  A dedicated web panel for platform oversight, handling user management, project analytics, template approvals, and global material pricing control.
                </p>
+               </div>
             </div>
             <div className="w-full relative group px-0 md:px-12">
                <div className="absolute inset-0 bg-red-500/10 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
