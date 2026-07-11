@@ -16,7 +16,7 @@ export function Contact() {
            Available for new opportunities
          </span>
 
-         <h2 className="text-[12vw] md:text-[10rem] font-display font-black uppercase text-white leading-none tracking-tighter mb-16">
+         <h2 className="text-[11vw] sm:text-[10vw] md:text-[8rem] lg:text-[10rem] font-display font-black uppercase text-white leading-none tracking-tighter mb-16">
            Let's Build
          </h2>
 

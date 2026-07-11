@@ -41,7 +41,7 @@ export function HouseMateCaseStudy() {
       */}
       <div className="px-6 md:px-12 max-w-[100rem] mx-auto mb-16 md:mb-32 flex flex-col items-center">
          <span className="text-sm font-mono text-neutral-500 tracking-widest uppercase mb-6 block">Featured Case Study</span>
-         <h2 className="text-6xl md:text-[10rem] font-display font-black uppercase text-white leading-none tracking-tighter text-center">
+         <h2 className="text-6xl sm:text-8xl md:text-[8rem] lg:text-[10rem] font-display font-black uppercase text-white leading-none tracking-tighter text-center">
            HouseMate
          </h2>
          <p className="text-xl md:text-2xl text-neutral-400 font-light mt-8 max-w-4xl text-center leading-relaxed">

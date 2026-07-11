@@ -62,18 +62,18 @@ export function Hero() {
             </motion.p>
           </div>
 
-          <div className="font-display font-black text-[12vw] sm:text-[10vw] leading-[0.85] tracking-tighter uppercase mb-8">
-            <div className="overflow-hidden flex h-[12vw] sm:h-[10vw]">
+          <div className="font-display font-black text-[9.5vw] sm:text-[9vw] md:text-[8vw] lg:text-[7.5vw] leading-[0.85] tracking-tighter uppercase mb-8">
+            <div className="overflow-hidden flex h-[9.5vw] sm:h-[9vw] md:h-[8vw] lg:h-[7.5vw]">
               <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.03 } } }} className="flex text-white">
                 {title.map((char, i) => <motion.span key={i} variants={letterVariants}>{char}</motion.span>)}
               </motion.div>
             </div>
-            <div className="overflow-hidden flex md:ml-[10vw] h-[12vw] sm:h-[10vw]">
+            <div className="overflow-hidden flex ml-[2vw] md:ml-[10vw] h-[9.5vw] sm:h-[9vw] md:h-[8vw] lg:h-[7.5vw]">
               <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.03, delayChildren: 0.1 } } }} className="flex text-white/50">
                 {title2.map((char, i) => <motion.span key={i} variants={letterVariants}>{char}</motion.span>)}
               </motion.div>
             </div>
-            <div className="overflow-hidden flex h-[12vw] sm:h-[10vw]">
+            <div className="overflow-hidden flex h-[9.5vw] sm:h-[9vw] md:h-[8vw] lg:h-[7.5vw]">
               <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.03, delayChildren: 0.2 } } }} className="flex text-white">
                 {title3.map((char, i) => <motion.span key={i} variants={letterVariants}>{char}</motion.span>)}
               </motion.div>
