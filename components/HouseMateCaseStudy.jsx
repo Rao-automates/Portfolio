@@ -40,10 +40,7 @@ export function HouseMateCaseStudy() {
          No scroll-jacking, perfectly smooth.
       */}
       <div className="px-6 md:px-12 max-w-[100rem] mx-auto mb-16 md:mb-32 flex flex-col items-center">
-         <div className="flex items-center gap-4 mb-8">
-           <div className="w-12 h-[1px] bg-white/20" />
-           <span className="text-white/50 font-display text-sm tracking-wide">01 / Featured Project</span>
-         </div>
+         {/* No label, just massive typography */}
          <h2 className="text-6xl sm:text-8xl md:text-[8rem] lg:text-[10rem] font-display font-black uppercase text-white leading-none tracking-tighter text-center">
            HouseMate
          </h2>
@@ -51,18 +48,17 @@ export function HouseMateCaseStudy() {
            A comprehensive property management ecosystem. Built with a native Android frontend and a high-performance Python FastAPI backend, secured by JWT authentication, designed to streamline contractor bidding, cost estimation, and user management.
          </p>
 
-         {/* Tech Stack Grid */}
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mt-12">
-            {[
-              { title: "Frontend Engine", tools: "Kotlin, XML, MVVM, Canvas API" },
-              { title: "Backend Services", tools: "Python, FastAPI, REST Architecture" },
-              { title: "Security & Cloud", tools: "JWT Auth, Firebase, Cloudinary" },
-            ].map((stack, i) => (
-               <div key={i} className="flex flex-col items-center justify-center p-6 border border-white/10 rounded-2xl bg-white/[0.02] hover:bg-white/5 transition-colors">
-                  <span className="text-white font-bold font-mono tracking-wide mb-2 uppercase text-sm">{stack.title}</span>
-                  <span className="text-neutral-400 text-sm text-center">{stack.tools}</span>
-               </div>
-            ))}
+         {/* Brutalist Typographic Tech Stack */}
+         <div className="flex flex-col items-center gap-2 mt-12 opacity-70 text-center px-4">
+            <span className="text-white/60 font-display text-lg md:text-xl">
+              <span className="text-white font-medium">Frontend:</span> Android (Kotlin, Canvas API)
+            </span>
+            <span className="text-white/60 font-display text-lg md:text-xl">
+              <span className="text-white font-medium">Backend:</span> FastAPI (Python), FCM
+            </span>
+            <span className="text-white/60 font-display text-lg md:text-xl">
+              <span className="text-white font-medium">Infrastructure:</span> Firebase, SQLite
+            </span>
          </div>
          
          <div className="flex flex-col md:flex-row gap-6 w-full justify-center mt-12">
@@ -208,9 +204,8 @@ export function HouseMateCaseStudy() {
       </div>
 
       {/* FULL VISUAL GALLERY (Horizontal Scroll) */}
-      <div className="w-full max-w-[100rem] mx-auto px-6 md:px-12 mt-16 mb-8">
-         <span className="text-sm font-mono text-neutral-500 tracking-widest uppercase block">Full Visual Gallery</span>
-         <h3 className="text-3xl font-display font-bold text-white mt-2">All Screens</h3>
+      <div className="w-full max-w-[100rem] mx-auto px-6 md:px-12 mt-16 mb-8 text-center md:text-left">
+         <h3 className="text-3xl font-display font-medium text-white/50">Full Visual Index</h3>
       </div>
 
       <div 
@@ -240,12 +235,7 @@ export function HouseMateCaseStudy() {
                      draggable="false"
                    />
 
-                   <div className="mt-8 md:mt-12 opacity-40 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-3">
-                      <div className="w-8 h-[1px] bg-white/30" />
-                      <span className="text-sm md:text-base font-display font-medium text-white tracking-tight whitespace-nowrap">
-                        {screenName}
-                      </span>
-                   </div>
+                   {/* Removed text labels completely, letting the images speak for themselves */}
 
                 </div>
               )

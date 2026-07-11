@@ -15,10 +15,6 @@ export function LinkedInAutomationCaseStudy() {
          
          {/* STICKY LEFT PANEL */}
          <div className="w-full xl:w-[40%] xl:sticky xl:top-0 h-auto xl:h-screen flex flex-col justify-center p-6 md:p-16 z-20 bg-[#030303]/80 backdrop-blur-3xl xl:bg-transparent border-b xl:border-b-0 xl:border-r border-white/5">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-[1px] bg-emerald-500/30" />
-              <span className="text-emerald-500/80 font-display text-sm tracking-wide">02 / Automation Engine</span>
-            </div>
             
             <h2 className="text-5xl md:text-7xl font-display font-black uppercase text-white leading-[0.9] tracking-tighter mb-8">
               LinkedIn<br/>Automation<br/>Engine
@@ -28,21 +24,17 @@ export function LinkedInAutomationCaseStudy() {
               A comprehensive n8n workflow system that automates content generation, approval, and LinkedIn posting with AI and dynamic chart visualizations.
             </p>
 
-            {/* Glowing Tech Stack Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
-               {[
-                 { name: "n8n", desc: "Workflow Core" },
-                 { name: "GPT-4", desc: "Content Gen" },
-                 { name: "Sheets API", desc: "Database" },
-                 { name: "LinkedIn API", desc: "Posting" },
-                 { name: "ApiFlash", desc: "Visuals" },
-                 { name: "Gmail API", desc: "Approvals" },
-               ].map((tech, i) => (
-                  <div key={i} className="flex flex-col p-4 border border-white/10 rounded-xl bg-white/[0.02] hover:bg-white/5 transition-colors group">
-                     <span className="text-white font-bold font-mono text-lg group-hover:text-emerald-400 transition-colors">{tech.name}</span>
-                     <span className="text-neutral-500 text-xs uppercase tracking-wider mt-1">{tech.desc}</span>
-                  </div>
-               ))}
+            {/* Brutalist Typographic Tech Stack */}
+            <div className="flex flex-col gap-1 mb-12 opacity-70">
+               <span className="text-white/60 font-display text-lg md:text-xl">
+                 <span className="text-white font-medium">Core:</span> n8n Workflow Engine, GPT-4
+               </span>
+               <span className="text-white/60 font-display text-lg md:text-xl">
+                 <span className="text-white font-medium">Integrations:</span> LinkedIn API, Gmail API
+               </span>
+               <span className="text-white/60 font-display text-lg md:text-xl">
+                 <span className="text-white font-medium">Data & Visuals:</span> Google Sheets, ApiFlash
+               </span>
             </div>
             
             <div className="flex gap-4">
@@ -68,18 +60,6 @@ export function LinkedInAutomationCaseStudy() {
                   {/* The Image Wrapper */}
                   <div className="relative w-full rounded-2xl border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.8)] overflow-hidden bg-[#0a0a0a] group-hover:border-emerald-500/30 transition-colors duration-500 z-10">
                      
-                     {/* Sleek Window Header */}
-                     <div className="w-full h-10 bg-[#050505] border-b border-white/5 flex items-center justify-between px-4">
-                        <div className="flex gap-2">
-                          <div className="w-2 h-2 rounded-full bg-white/20" />
-                          <div className="w-2 h-2 rounded-full bg-white/20" />
-                          <div className="w-2 h-2 rounded-full bg-white/20" />
-                        </div>
-                        <div className="text-[11px] font-display text-white/40 tracking-wide pr-8">
-                          System Overview {index+1}.0
-                        </div>
-                     </div>
-
                      {/* The Workflow Screenshot */}
                      {/* eslint-disable-next-line @next/next/no-img-element */}
                      <img 
