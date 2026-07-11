@@ -45,7 +45,7 @@ export function HouseMateCaseStudy() {
            HouseMate
          </h2>
          <p className="text-xl md:text-2xl text-neutral-400 font-light mt-8 max-w-4xl text-center leading-relaxed">
-           A comprehensive property management ecosystem. Built with a native Android frontend and a high-performance Python FastAPI backend, designed to streamline contractor bidding, cost estimation, and user management.
+           A comprehensive property management ecosystem. Built with a native Android frontend and a high-performance Python FastAPI backend, secured by JWT authentication, designed to streamline contractor bidding, cost estimation, and user management.
          </p>
 
          {/* Tech Stack Grid */}
@@ -53,7 +53,7 @@ export function HouseMateCaseStudy() {
             {[
               { title: "Frontend Engine", tools: "Kotlin, XML, MVVM, Canvas API" },
               { title: "Backend Services", tools: "Python, FastAPI, REST Architecture" },
-              { title: "Infrastructure", tools: "Firebase Auth, Cloudinary, Render" },
+              { title: "Security & Cloud", tools: "JWT Auth, Firebase, Cloudinary" },
             ].map((stack, i) => (
                <div key={i} className="flex flex-col items-center justify-center p-6 border border-white/10 rounded-2xl bg-white/[0.02] hover:bg-white/5 transition-colors">
                   <span className="text-white font-bold font-mono tracking-wide mb-2 uppercase text-sm">{stack.title}</span>
