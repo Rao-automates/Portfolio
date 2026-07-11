@@ -40,7 +40,10 @@ export function HouseMateCaseStudy() {
          No scroll-jacking, perfectly smooth.
       */}
       <div className="px-6 md:px-12 max-w-[100rem] mx-auto mb-16 md:mb-32 flex flex-col items-center">
-         <span className="text-sm font-mono text-neutral-500 tracking-widest uppercase mb-6 block">Featured Case Study</span>
+         <div className="flex items-center gap-4 mb-8">
+           <div className="w-12 h-[1px] bg-white/20" />
+           <span className="text-white/50 font-display text-sm tracking-wide">01 / Featured Project</span>
+         </div>
          <h2 className="text-6xl sm:text-8xl md:text-[8rem] lg:text-[10rem] font-display font-black uppercase text-white leading-none tracking-tighter text-center">
            HouseMate
          </h2>
@@ -237,8 +240,9 @@ export function HouseMateCaseStudy() {
                      draggable="false"
                    />
 
-                   <div className="mt-8 md:mt-12 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-xs md:text-sm font-mono text-white uppercase tracking-widest bg-white/5 px-6 py-3 rounded-full border border-white/10 backdrop-blur-md whitespace-nowrap">
+                   <div className="mt-8 md:mt-12 opacity-40 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-3">
+                      <div className="w-8 h-[1px] bg-white/30" />
+                      <span className="text-sm md:text-base font-display font-medium text-white tracking-tight whitespace-nowrap">
                         {screenName}
                       </span>
                    </div>
