@@ -44,7 +44,7 @@ const experiences = [
 
 export function Experience() {
   return (
-    <section className="py-32 md:py-48 px-6 relative z-10">
+    <section id="experience" className="py-32 md:py-48 px-6 relative z-10">
       <div className="max-w-screen-2xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between pb-12 mb-24 relative">
           <motion.div 

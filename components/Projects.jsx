@@ -5,17 +5,6 @@ import { ArrowUpRight } from 'lucide-react'
 
 const projects = [
   {
-    title: "HouseMate",
-    description: "A comprehensive construction cost estimator and housing management platform. Includes a Kotlin XML front-end and a robust Python API backend.",
-    type: "Featured System",
-    year: "2024",
-    tech: "Kotlin • Python • FastAPI",
-    links: [
-      { label: "Frontend", url: "https://github.com/Rao-automates/HouseMate-Kotlin-XML-Front-end" },
-      { label: "Backend", url: "https://github.com/Rao-automates/HouseMate-Api-Backend" }
-    ]
-  },
-  {
     title: "LinkedIn Automation",
     description: "Automated Lead Qualification & Scheduling Workflow. An intelligent n8n workflow that automates the entire process from Google Sheets to calendar booking.",
     type: "Autonomous Agent",

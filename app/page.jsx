@@ -1,13 +1,19 @@
 import { SmoothScroll } from '../components/SmoothScroll'
+import { Navbar } from '../components/Navbar'
 import { Hero } from '../components/Hero'
 import { About } from '../components/About'
 import { Experience } from '../components/Experience'
+import { HouseMateCaseStudy } from '../components/HouseMateCaseStudy'
+import { LinkedInAutomationCaseStudy } from '../components/LinkedInAutomationCaseStudy'
 import { Projects } from '../components/Projects'
+import { Contact } from '../components/Contact'
 
 export default function Home() {
   return (
     <SmoothScroll>
       <main className="min-h-screen bg-background relative z-10 selection:bg-white selection:text-black overflow-hidden">
+        <Navbar />
+        
         {/* Ambient Gradient Background */}
         <div className="fixed inset-0 z-[-2] bg-background" />
         <div className="fixed inset-0 z-[-1] opacity-30" style={{
@@ -21,7 +27,10 @@ export default function Home() {
         <Hero />
         <About />
         <Experience />
+        <HouseMateCaseStudy />
+        <LinkedInAutomationCaseStudy />
         <Projects />
+        <Contact />
       </main>
     </SmoothScroll>
   )

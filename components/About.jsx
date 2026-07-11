@@ -16,7 +16,7 @@ export function About() {
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
 
   return (
-    <section ref={containerRef} className="py-32 px-6 relative z-10">
+    <section ref={containerRef} id="about" className="py-32 px-6 relative z-10">
       <motion.div style={{ y, opacity }} className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
           <span className="text-neutral-500">01.</span> Engineering
