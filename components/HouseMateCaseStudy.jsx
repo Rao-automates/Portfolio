@@ -74,189 +74,124 @@ export function HouseMateCaseStudy() {
          </div>
       </div>
 
-      {/* DETAILED FEATURE BENTO (Premium Integrated Redesign) */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full max-w-[100rem] mx-auto px-6 md:px-12 mt-16 md:mt-32 mb-16 md:mb-32">
+      {/* AGENCY ZIG-ZAG LAYOUT */}
+      <div className="w-full max-w-[100rem] mx-auto px-6 md:px-12 mt-24 md:mt-48 flex flex-col gap-32 md:gap-48 pb-32">
          
-         {/* Feature 1: Map Creator */}
-         <div className="col-span-1 lg:col-span-2 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] pt-8 md:pt-12 px-8 md:px-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500 flex flex-col md:flex-row gap-8 items-start min-h-[30rem]">
-            {/* Noise Texture */}
-            <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
-            {/* Hover Glow */}
-            <div className="absolute -top-32 -right-32 w-96 h-96 bg-emerald-500/10 blur-[100px] rounded-full group-hover:bg-emerald-500/20 transition-colors duration-700 pointer-events-none" />
-            
-            <div className="relative z-10 flex flex-col h-full justify-start md:w-1/2">
-              <div className="mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-emerald-500/30 group-hover:bg-emerald-500/10 transition-colors duration-500">
-                  <Map className="text-emerald-500" size={24} strokeWidth={1.5} />
-                </div>
-                <span className="text-emerald-500 font-mono text-xs tracking-widest uppercase mb-4 block">Core Engine</span>
-                <h3 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight mb-6">2D Map Creator</h3>
-              </div>
-              <p className="text-white/60 leading-relaxed text-lg font-light pb-12">
-                Built entirely from scratch on Android's Canvas API with zero third-party libraries. Homeowners can draw walls, rooms, doors, and stairs with live SBCA COS limit overlays.
-              </p>
+         {/* Feature 1: Map Creator (Text Left, UI Right) */}
+         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+            <div className="w-full lg:w-1/2 flex flex-col items-start">
+               <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+                 <Map className="text-emerald-500" size={28} strokeWidth={1.5} />
+               </div>
+               <span className="text-emerald-500 font-mono text-sm tracking-widest uppercase mb-4 block">Core Engine</span>
+               <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">2D Map Creator</h3>
+               <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
+                 Built entirely from scratch on Android's Canvas API with zero third-party libraries. Homeowners can draw walls, rooms, doors, and stairs with live SBCA COS limit overlays. Features an automated compliance engine that verifies against KB&TPR 2002 regulations and exports straight to PDF.
+               </p>
             </div>
-
-            {/* Embedded UI */}
-            <div className="relative z-10 md:absolute md:-bottom-12 md:-right-12 md:w-2/3 h-full flex justify-end items-end transition-transform duration-700 group-hover:scale-[1.02] origin-bottom-right">
+            <div className="w-full lg:w-1/2 relative group">
+               <div className="absolute inset-0 bg-emerald-500/20 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                {/* eslint-disable-next-line @next/next/no-img-element */}
-               <img src="/housemate/03_Map_Creator.jpeg" alt="Map Creator UI" className="w-[80%] md:w-auto h-[400px] md:h-[600px] object-cover rounded-tl-[2rem] rounded-tr-[2rem] md:rounded-tr-none border-t-[4px] border-l-[4px] border-r-[4px] md:border-r-0 border-[#1a1a1a] shadow-[-20px_-20px_60px_rgba(0,0,0,0.5)] bg-black" />
+               <img 
+                 src="/housemate/03_Map_Creator.jpeg" 
+                 alt="Map Creator" 
+                 className="w-full max-w-sm md:max-w-md mx-auto h-auto rounded-[2rem] border-[4px] border-[#1a1a1a] ring-1 ring-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.8)] transform transition-transform duration-700 group-hover:-translate-y-4 group-hover:scale-[1.02]" 
+               />
             </div>
          </div>
 
-         {/* Feature 2: Cost Estimator */}
-         <div className="col-span-1 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] pt-8 md:pt-12 px-8 md:px-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500 flex flex-col min-h-[30rem]">
-            <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
-            <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-500/10 blur-[100px] rounded-full group-hover:bg-blue-500/20 transition-colors duration-700 pointer-events-none" />
-            
-            <div className="relative z-10 flex flex-col justify-start">
-              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-blue-500/30 group-hover:bg-blue-500/10 transition-colors duration-500">
-                <Calculator className="text-blue-500" size={24} strokeWidth={1.5} />
-              </div>
-              <span className="text-blue-500 font-mono text-xs tracking-widest uppercase mb-4 block">FastAPI Backend</span>
-              <h3 className="text-3xl font-display font-bold text-white tracking-tight mb-4">Cost Estimator</h3>
-              <p className="text-white/60 leading-relaxed font-light mb-8">
-                Instant material BOQ (blocks, cement, steel) across 3 quality tiers based on budget constraints.
-              </p>
-            </div>
-
-            {/* Embedded UI */}
-            <div className="relative z-10 flex-1 flex justify-center items-end mt-4 transition-transform duration-700 group-hover:-translate-y-2">
+         {/* Feature 2: Cost Estimator (UI Left, Text Right) */}
+         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-24">
+            <div className="w-full lg:w-1/2 relative group">
+               <div className="absolute inset-0 bg-blue-500/20 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                {/* eslint-disable-next-line @next/next/no-img-element */}
-               <img src="/housemate/05_Cost_Estimator.jpeg" alt="Cost Estimator UI" className="w-[70%] h-auto object-cover rounded-tl-3xl rounded-tr-3xl border-t-[4px] border-l-[4px] border-r-[4px] border-[#1a1a1a] shadow-[0_-20px_40px_rgba(0,0,0,0.5)] translate-y-8" />
+               <img 
+                 src="/housemate/05_Cost_Estimator.jpeg" 
+                 alt="Cost Estimator" 
+                 className="w-full max-w-sm md:max-w-md mx-auto h-auto rounded-[2rem] border-[4px] border-[#1a1a1a] ring-1 ring-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.8)] transform transition-transform duration-700 group-hover:-translate-y-4 group-hover:scale-[1.02]" 
+               />
+            </div>
+            <div className="w-full lg:w-1/2 flex flex-col items-start lg:items-end text-left lg:text-right">
+               <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+                 <Calculator className="text-blue-500" size={28} strokeWidth={1.5} />
+               </div>
+               <span className="text-blue-500 font-mono text-sm tracking-widest uppercase mb-4 block">FastAPI Backend</span>
+               <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">Cost Estimator</h3>
+               <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
+                 Select a floor plan, enter budget and floor count, and receive a full material BOQ (blocks, cement, steel, plumbing) broken across 3 quality tiers.
+               </p>
             </div>
          </div>
 
-         {/* Feature 3: Marketplace */}
-         <div className="col-span-1 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] pt-8 md:pt-12 px-8 md:px-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500 flex flex-col min-h-[30rem]">
-            <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
-            <div className="absolute -top-32 -right-32 w-96 h-96 bg-purple-500/10 blur-[100px] rounded-full group-hover:bg-purple-500/20 transition-colors duration-700 pointer-events-none" />
-            
-            <div className="relative z-10 flex flex-col justify-start">
-              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-purple-500/30 group-hover:bg-purple-500/10 transition-colors duration-500">
-                <Users className="text-purple-500" size={24} strokeWidth={1.5} />
-              </div>
-              <span className="text-purple-500 font-mono text-xs tracking-widest uppercase mb-4 block">Bidding Logic</span>
-              <h3 className="text-3xl font-display font-bold text-white tracking-tight mb-4">Marketplace</h3>
-              <p className="text-white/60 leading-relaxed font-light mb-8">
-                Contractors receive push notifications, browse listings, and submit competitive bids.
-              </p>
+         {/* Feature 3: Marketplace (Text Left, UI Right) */}
+         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+            <div className="w-full lg:w-1/2 flex flex-col items-start">
+               <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+                 <Users className="text-purple-500" size={28} strokeWidth={1.5} />
+               </div>
+               <span className="text-purple-500 font-mono text-sm tracking-widest uppercase mb-4 block">Bidding Logic</span>
+               <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">Marketplace</h3>
+               <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
+                 Homeowners post projects. Contractors receive push notifications, browse listings, and submit competitive bids. Private chat unlocks upon acceptance.
+               </p>
             </div>
-
-            {/* Embedded UI */}
-            <div className="relative z-10 flex-1 flex justify-center items-end mt-4 transition-transform duration-700 group-hover:-translate-y-2">
+            <div className="w-full lg:w-1/2 relative group">
+               <div className="absolute inset-0 bg-purple-500/20 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                {/* eslint-disable-next-line @next/next/no-img-element */}
-               <img src="/housemate/10_Bidding_Project_Details.jpeg" alt="Marketplace UI" className="w-[70%] h-auto object-cover rounded-tl-3xl rounded-tr-3xl border-t-[4px] border-l-[4px] border-r-[4px] border-[#1a1a1a] shadow-[0_-20px_40px_rgba(0,0,0,0.5)] translate-y-8" />
+               <img 
+                 src="/housemate/10_Bidding_Project_Details.jpeg" 
+                 alt="Marketplace" 
+                 className="w-full max-w-sm md:max-w-md mx-auto h-auto rounded-[2rem] border-[4px] border-[#1a1a1a] ring-1 ring-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.8)] transform transition-transform duration-700 group-hover:-translate-y-4 group-hover:scale-[1.02]" 
+               />
             </div>
          </div>
 
-         {/* Feature 4: Real-Time Sync */}
-         <div className="col-span-1 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] pt-8 md:pt-12 px-8 md:px-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500 flex flex-col min-h-[30rem]">
-            <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
-            <div className="absolute -top-32 -right-32 w-96 h-96 bg-orange-500/10 blur-[100px] rounded-full group-hover:bg-orange-500/20 transition-colors duration-700 pointer-events-none" />
-            
-            <div className="relative z-10 flex flex-col justify-start">
-              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-orange-500/30 group-hover:bg-orange-500/10 transition-colors duration-500">
-                <Zap className="text-orange-500" size={24} strokeWidth={1.5} />
-              </div>
-              <span className="text-orange-500 font-mono text-xs tracking-widest uppercase mb-4 block">Infrastructure</span>
-              <h3 className="text-3xl font-display font-bold text-white tracking-tight mb-4">Real-Time Sync</h3>
-              <p className="text-white/60 leading-relaxed font-light mb-8">
-                FCM push notifications and live chat deliver updates instantly.
-              </p>
-            </div>
-
-            {/* Embedded UI */}
-            <div className="relative z-10 flex-1 flex justify-center items-end mt-4 transition-transform duration-700 group-hover:-translate-y-2">
+         {/* Feature 4: Real-Time Sync (UI Left, Text Right) */}
+         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-24">
+            <div className="w-full lg:w-1/2 relative group">
+               <div className="absolute inset-0 bg-orange-500/20 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                {/* eslint-disable-next-line @next/next/no-img-element */}
-               <img src="/housemate/12_Messages_Inbox.jpeg" alt="Chat UI" className="w-[70%] h-auto object-cover rounded-tl-3xl rounded-tr-3xl border-t-[4px] border-l-[4px] border-r-[4px] border-[#1a1a1a] shadow-[0_-20px_40px_rgba(0,0,0,0.5)] translate-y-8" />
+               <img 
+                 src="/housemate/12_Messages_Inbox.jpeg" 
+                 alt="Real-Time Sync" 
+                 className="w-full max-w-sm md:max-w-md mx-auto h-auto rounded-[2rem] border-[4px] border-[#1a1a1a] ring-1 ring-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.8)] transform transition-transform duration-700 group-hover:-translate-y-4 group-hover:scale-[1.02]" 
+               />
+            </div>
+            <div className="w-full lg:w-1/2 flex flex-col items-start lg:items-end text-left lg:text-right">
+               <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+                 <Zap className="text-orange-500" size={28} strokeWidth={1.5} />
+               </div>
+               <span className="text-orange-500 font-mono text-sm tracking-widest uppercase mb-4 block">Infrastructure</span>
+               <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">Real-Time Sync</h3>
+               <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
+                 Powered by Firebase Cloud Messaging. New bids, messages, and project alerts are delivered instantly with live unread badges across the platform.
+               </p>
             </div>
          </div>
 
-         {/* Feature 5: Web Admin (Full Width Row) */}
-         <div className="col-span-1 lg:col-span-3 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] pt-8 md:pt-12 pl-8 md:pl-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500 flex flex-col md:flex-row gap-8 items-center min-h-[30rem]">
-            <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
-            <div className="absolute -top-32 -right-32 w-96 h-96 bg-red-500/10 blur-[100px] rounded-full group-hover:bg-red-500/20 transition-colors duration-700 pointer-events-none" />
-            
-            <div className="relative z-10 flex flex-col justify-center w-full md:w-1/3 pr-8 md:pr-0 pb-8 md:pb-0">
-              <div className="mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-red-500/30 group-hover:bg-red-500/10 transition-colors duration-500">
-                  <LayoutDashboard className="text-red-500" size={24} strokeWidth={1.5} />
-                </div>
-                <span className="text-red-500 font-mono text-xs tracking-widest uppercase mb-4 block">Oversight</span>
-                <h3 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight mb-6">Admin Dashboard</h3>
-              </div>
-              <p className="text-white/60 leading-relaxed text-lg font-light">
-                A dedicated web panel for platform oversight, handling user management, project analytics, template approvals, and global material pricing control.
-              </p>
+         {/* Feature 5: Web Admin (Full Width Cinematic) */}
+         <div className="flex flex-col items-center gap-16 pt-24 md:pt-32">
+            <div className="flex flex-col items-center text-center max-w-3xl">
+               <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+                 <LayoutDashboard className="text-red-500" size={28} strokeWidth={1.5} />
+               </div>
+               <span className="text-red-500 font-mono text-sm tracking-widest uppercase mb-4 block">Oversight</span>
+               <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">Admin Dashboard</h3>
+               <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
+                 A dedicated web panel for platform oversight, handling user management, project analytics, template approvals, and global material pricing control.
+               </p>
             </div>
-
-            {/* Embedded UI */}
-            <div className="relative z-10 w-full md:w-2/3 h-full flex justify-end items-center transition-transform duration-700 group-hover:-translate-x-2">
+            <div className="w-full relative group px-0 md:px-12">
+               <div className="absolute inset-0 bg-red-500/10 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                {/* eslint-disable-next-line @next/next/no-img-element */}
-               <img src="/housemate/14_Admin_Dashboard.jpeg" alt="Admin Dashboard UI" className="w-[120%] md:w-full h-auto object-cover rounded-tl-xl border-t-[4px] border-l-[4px] border-[#1a1a1a] shadow-[-20px_20px_60px_rgba(0,0,0,0.5)] translate-x-8 md:translate-x-12 translate-y-8 md:translate-y-12" />
+               <img 
+                 src="/housemate/14_Admin_Dashboard.jpeg" 
+                 alt="Admin Dashboard" 
+                 className="w-full h-auto rounded-xl md:rounded-2xl border-[2px] md:border-[4px] border-[#1a1a1a] ring-1 ring-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.8)] transform transition-transform duration-700 group-hover:-translate-y-4 group-hover:scale-[1.02]" 
+               />
             </div>
          </div>
 
-      </div>
-
-      {/* 
-         NATIVE CINEMATIC SCROLL GALLERY 
-         120fps buttery smooth performance, completely native.
-         Uses mask-image to create a cinematic edge-fade effect.
-      */}
-      <div className="w-full max-w-[100rem] mx-auto px-6 md:px-12 mt-32 mb-8">
-         <span className="text-sm font-mono text-neutral-500 tracking-widest uppercase block">Full Visual Gallery</span>
-         <h3 className="text-3xl font-display font-bold text-white mt-2">All Screens</h3>
-      </div>
-
-      <div 
-        className="w-full relative"
-        style={{ 
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-          maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
-        }}
-      >
-        <div className="flex overflow-x-auto gap-8 md:gap-24 px-[10vw] pb-32 pt-16 snap-x snap-mandatory hide-scrollbar items-center">
-           
-           {screenshots.map((src, index) => {
-              const isAdmin = src.includes('Admin');
-              const screenName = src.replace('.jpeg', '').replace(/^\d+_/, '').replace(/_/g, ' ');
-              
-              // Sleeker, more realistic device rounding
-              const rounded = isAdmin ? 'rounded-xl' : 'rounded-2xl md:rounded-[1.5rem]';
-
-              return (
-                <div key={index} className="shrink-0 snap-center relative group flex flex-col items-center cursor-grab active:cursor-grabbing">
-                   
-                   {/* 
-                     UNCROPPED, PIXEL-PERFECT HARDWARE DEVICE 
-                     Using h-[75vh] w-auto ensures the image perfectly dictates its own width. 
-                     No cropping whatsoever.
-                   */}
-                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                   <img 
-                     src={`/housemate/${src}`} 
-                     alt={screenName}
-                     className={`h-[60vh] md:h-[75vh] w-auto object-cover bg-black ${rounded} ring-1 ring-white/10 border-[2px] md:border-[4px] border-[#1a1a1a] shadow-[0_30px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_30px_80px_rgba(255,255,255,0.15)] transition-all duration-500`}
-                     loading="lazy"
-                     draggable="false"
-                   />
-
-                   {/* Sleek Label */}
-                   <div className="mt-8 md:mt-12 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-xs md:text-sm font-mono text-white uppercase tracking-widest bg-white/5 px-6 py-3 rounded-full border border-white/10 backdrop-blur-md whitespace-nowrap">
-                        {screenName}
-                      </span>
-                   </div>
-
-                </div>
-              )
-           })}
-
-           {/* End padding for the scroll track */}
-           <div className="shrink-0 w-[5vw]" />
-        </div>
       </div>
     </section>
   )
