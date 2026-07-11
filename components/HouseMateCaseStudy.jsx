@@ -79,13 +79,14 @@ export function HouseMateCaseStudy() {
          
          {/* Feature 1: Map Creator (Text Left, UI Right) */}
          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
-            <div className="w-full lg:w-1/2 flex flex-col items-start">
-               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
-                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-                 <span className="text-white/80 text-xs font-semibold tracking-wide uppercase">Core Engine</span>
-               </div>
-               <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">2D Map Creator</h3>
-               <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
+            <div className="w-full lg:w-1/2 relative flex flex-col justify-center pl-4 md:pl-12">
+               <span className="absolute -top-16 -left-4 md:-top-24 md:-left-8 text-white/[0.03] font-display text-[160px] md:text-[240px] font-bold leading-none z-0 tracking-tighter select-none pointer-events-none">
+                  01
+               </span>
+               <div className="relative z-10 flex flex-col items-start">
+                  <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-6">2D Map Creator</h3>
+                  <div className="w-12 h-[2px] bg-white/20 mb-8" />
+                  <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
                  Built entirely from scratch on Android's Canvas API with zero third-party libraries. Homeowners can draw walls, rooms, doors, and stairs with live SBCA COS limit overlays. Features an automated compliance engine that verifies against KB&TPR 2002 regulations and exports straight to PDF.
                </p>
             </div>
@@ -111,13 +112,14 @@ export function HouseMateCaseStudy() {
                  className="w-full max-w-sm md:max-w-md mx-auto h-auto rounded-[2rem] border-[4px] border-[#1a1a1a] ring-1 ring-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.8)] transform transition-transform duration-700 group-hover:-translate-y-4 group-hover:scale-[1.02]" 
                />
             </div>
-            <div className="w-full lg:w-1/2 flex flex-col items-start lg:items-end text-left lg:text-right">
-               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
-                 <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
-                 <span className="text-white/80 text-xs font-semibold tracking-wide uppercase">FastAPI Backend</span>
-               </div>
-               <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">Cost Estimator</h3>
-               <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
+            <div className="w-full lg:w-1/2 relative flex flex-col justify-center pr-4 md:pr-12 lg:items-end text-left lg:text-right">
+               <span className="absolute -top-16 -right-4 md:-top-24 md:-right-8 text-white/[0.03] font-display text-[160px] md:text-[240px] font-bold leading-none z-0 tracking-tighter select-none pointer-events-none">
+                  02
+               </span>
+               <div className="relative z-10 flex flex-col items-start lg:items-end">
+                  <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-6">Cost Estimator</h3>
+                  <div className="w-12 h-[2px] bg-white/20 mb-8" />
+                  <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
                  Select a floor plan, enter budget and floor count, and receive a full material BOQ (blocks, cement, steel, plumbing) broken across 3 quality tiers.
                </p>
             </div>
@@ -125,13 +127,14 @@ export function HouseMateCaseStudy() {
 
          {/* Feature 3: Marketplace (Text Left, UI Right) */}
          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
-            <div className="w-full lg:w-1/2 flex flex-col items-start">
-               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
-                 <div className="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
-                 <span className="text-white/80 text-xs font-semibold tracking-wide uppercase">Bidding Logic</span>
-               </div>
-               <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">Marketplace</h3>
-               <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
+            <div className="w-full lg:w-1/2 relative flex flex-col justify-center pl-4 md:pl-12">
+               <span className="absolute -top-16 -left-4 md:-top-24 md:-left-8 text-white/[0.03] font-display text-[160px] md:text-[240px] font-bold leading-none z-0 tracking-tighter select-none pointer-events-none">
+                  03
+               </span>
+               <div className="relative z-10 flex flex-col items-start">
+                  <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-6">Marketplace</h3>
+                  <div className="w-12 h-[2px] bg-white/20 mb-8" />
+                  <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
                  Homeowners post projects. Contractors receive push notifications, browse listings, and submit competitive bids. Private chat unlocks upon acceptance.
                </p>
             </div>
@@ -157,13 +160,14 @@ export function HouseMateCaseStudy() {
                  className="w-full max-w-sm md:max-w-md mx-auto h-auto rounded-[2rem] border-[4px] border-[#1a1a1a] ring-1 ring-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.8)] transform transition-transform duration-700 group-hover:-translate-y-4 group-hover:scale-[1.02]" 
                />
             </div>
-            <div className="w-full lg:w-1/2 flex flex-col items-start lg:items-end text-left lg:text-right">
-               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
-                 <div className="w-1.5 h-1.5 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
-                 <span className="text-white/80 text-xs font-semibold tracking-wide uppercase">Infrastructure</span>
-               </div>
-               <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">Real-Time Sync</h3>
-               <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
+            <div className="w-full lg:w-1/2 relative flex flex-col justify-center pr-4 md:pr-12 lg:items-end text-left lg:text-right">
+               <span className="absolute -top-16 -right-4 md:-top-24 md:-right-8 text-white/[0.03] font-display text-[160px] md:text-[240px] font-bold leading-none z-0 tracking-tighter select-none pointer-events-none">
+                  04
+               </span>
+               <div className="relative z-10 flex flex-col items-start lg:items-end">
+                  <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-6">Real-Time Sync</h3>
+                  <div className="w-12 h-[2px] bg-white/20 mb-8" />
+                  <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
                  Powered by Firebase Cloud Messaging. New bids, messages, and project alerts are delivered instantly with live unread badges across the platform.
                </p>
             </div>
@@ -171,13 +175,14 @@ export function HouseMateCaseStudy() {
 
          {/* Feature 5: Web Admin (Full Width Cinematic) */}
          <div className="flex flex-col items-center gap-16 pt-24 md:pt-32">
-            <div className="flex flex-col items-center text-center max-w-3xl">
-               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
-                 <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
-                 <span className="text-white/80 text-xs font-semibold tracking-wide uppercase">Oversight</span>
-               </div>
-               <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">Admin Dashboard</h3>
-               <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
+            <div className="relative flex flex-col items-center text-center max-w-3xl pt-12">
+               <span className="absolute -top-16 left-1/2 -translate-x-1/2 text-white/[0.03] font-display text-[160px] md:text-[240px] font-bold leading-none z-0 tracking-tighter select-none pointer-events-none">
+                  05
+               </span>
+               <div className="relative z-10 flex flex-col items-center">
+                  <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-6">Admin Dashboard</h3>
+                  <div className="w-12 h-[2px] bg-white/20 mb-8" />
+                  <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
                  A dedicated web panel for platform oversight, handling user management, project analytics, template approvals, and global material pricing control.
                </p>
             </div>
