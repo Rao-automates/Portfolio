@@ -146,8 +146,8 @@ export function HouseMateCaseStudy() {
               const isAdmin = src.includes('Admin');
               const screenName = src.replace('.jpeg', '').replace(/^\d+_/, '').replace(/_/g, ' ');
               
-              // Extreme iPhone rounding for mobile, standard rounding for desktop
-              const rounded = isAdmin ? 'rounded-2xl' : 'rounded-[2rem] md:rounded-[3rem]';
+              // Sleeker, more realistic device rounding
+              const rounded = isAdmin ? 'rounded-xl' : 'rounded-2xl md:rounded-[1.5rem]';
 
               return (
                 <div key={index} className="shrink-0 snap-center relative group flex flex-col items-center cursor-grab active:cursor-grabbing">
@@ -161,7 +161,7 @@ export function HouseMateCaseStudy() {
                    <img 
                      src={`/housemate/${src}`} 
                      alt={screenName}
-                     className={`h-[60vh] md:h-[75vh] w-auto object-cover bg-black ${rounded} ring-1 ring-white/10 border-[4px] md:border-[8px] border-[#1a1a1a] shadow-[0_30px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_30px_80px_rgba(255,255,255,0.15)] transition-all duration-500`}
+                     className={`h-[60vh] md:h-[75vh] w-auto object-cover bg-black ${rounded} ring-1 ring-white/10 border-[2px] md:border-[4px] border-[#1a1a1a] shadow-[0_30px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_30px_80px_rgba(255,255,255,0.15)] transition-all duration-500`}
                      loading="lazy"
                      draggable="false"
                    />
