@@ -74,104 +74,127 @@ export function HouseMateCaseStudy() {
          </div>
       </div>
 
-      {/* DETAILED FEATURE BENTO (Premium Redesign) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[100rem] mx-auto px-6 md:px-12 mt-16 md:mt-32 mb-16 md:mb-32">
+      {/* DETAILED FEATURE BENTO (Premium Integrated Redesign) */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full max-w-[100rem] mx-auto px-6 md:px-12 mt-16 md:mt-32 mb-16 md:mb-32">
          
          {/* Feature 1: Map Creator */}
-         <div className="col-span-1 lg:col-span-2 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] p-8 md:p-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500">
+         <div className="col-span-1 lg:col-span-2 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] pt-8 md:pt-12 px-8 md:px-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500 flex flex-col md:flex-row gap-8 items-start min-h-[30rem]">
             {/* Noise Texture */}
             <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
-            
             {/* Hover Glow */}
             <div className="absolute -top-32 -right-32 w-96 h-96 bg-emerald-500/10 blur-[100px] rounded-full group-hover:bg-emerald-500/20 transition-colors duration-700 pointer-events-none" />
             
-            <div className="relative z-10 flex flex-col h-full justify-between">
-              <div className="mb-12 md:mb-24">
+            <div className="relative z-10 flex flex-col h-full justify-start md:w-1/2">
+              <div className="mb-6">
                 <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-emerald-500/30 group-hover:bg-emerald-500/10 transition-colors duration-500">
                   <Map className="text-emerald-500" size={24} strokeWidth={1.5} />
                 </div>
                 <span className="text-emerald-500 font-mono text-xs tracking-widest uppercase mb-4 block">Core Engine</span>
                 <h3 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight mb-6">2D Map Creator</h3>
               </div>
-              <p className="text-white/60 leading-relaxed max-w-2xl text-lg font-light">
-                Built entirely from scratch on Android's Canvas API with zero third-party libraries. Homeowners can draw walls, rooms, doors, and stairs with live SBCA COS limit overlays. Features an automated compliance engine that verifies against KB&TPR 2002 regulations and exports straight to PDF.
+              <p className="text-white/60 leading-relaxed text-lg font-light pb-12">
+                Built entirely from scratch on Android's Canvas API with zero third-party libraries. Homeowners can draw walls, rooms, doors, and stairs with live SBCA COS limit overlays.
               </p>
+            </div>
+
+            {/* Embedded UI */}
+            <div className="relative z-10 md:absolute md:-bottom-12 md:-right-12 md:w-2/3 h-full flex justify-end items-end transition-transform duration-700 group-hover:scale-[1.02] origin-bottom-right">
+               {/* eslint-disable-next-line @next/next/no-img-element */}
+               <img src="/housemate/03_Map_Creator.jpeg" alt="Map Creator UI" className="w-[80%] md:w-auto h-[400px] md:h-[600px] object-cover rounded-tl-[2rem] rounded-tr-[2rem] md:rounded-tr-none border-t-[4px] border-l-[4px] border-r-[4px] md:border-r-0 border-[#1a1a1a] shadow-[-20px_-20px_60px_rgba(0,0,0,0.5)] bg-black" />
             </div>
          </div>
 
          {/* Feature 2: Cost Estimator */}
-         <div className="col-span-1 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] p-8 md:p-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500">
+         <div className="col-span-1 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] pt-8 md:pt-12 px-8 md:px-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500 flex flex-col min-h-[30rem]">
             <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
             <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-500/10 blur-[100px] rounded-full group-hover:bg-blue-500/20 transition-colors duration-700 pointer-events-none" />
             
-            <div className="relative z-10 flex flex-col h-full justify-between">
-              <div className="mb-12">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-blue-500/30 group-hover:bg-blue-500/10 transition-colors duration-500">
-                  <Calculator className="text-blue-500" size={24} strokeWidth={1.5} />
-                </div>
-                <span className="text-blue-500 font-mono text-xs tracking-widest uppercase mb-4 block">FastAPI Backend</span>
-                <h3 className="text-3xl font-display font-bold text-white tracking-tight mb-6">Cost Estimator</h3>
+            <div className="relative z-10 flex flex-col justify-start">
+              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-blue-500/30 group-hover:bg-blue-500/10 transition-colors duration-500">
+                <Calculator className="text-blue-500" size={24} strokeWidth={1.5} />
               </div>
-              <p className="text-white/60 leading-relaxed font-light">
-                Select a floor plan, enter budget and floor count, and receive a full material BOQ (blocks, cement, steel, plumbing) broken across 3 quality tiers.
+              <span className="text-blue-500 font-mono text-xs tracking-widest uppercase mb-4 block">FastAPI Backend</span>
+              <h3 className="text-3xl font-display font-bold text-white tracking-tight mb-4">Cost Estimator</h3>
+              <p className="text-white/60 leading-relaxed font-light mb-8">
+                Instant material BOQ (blocks, cement, steel) across 3 quality tiers based on budget constraints.
               </p>
+            </div>
+
+            {/* Embedded UI */}
+            <div className="relative z-10 flex-1 flex justify-center items-end mt-4 transition-transform duration-700 group-hover:-translate-y-2">
+               {/* eslint-disable-next-line @next/next/no-img-element */}
+               <img src="/housemate/05_Cost_Estimator.jpeg" alt="Cost Estimator UI" className="w-[70%] h-auto object-cover rounded-tl-3xl rounded-tr-3xl border-t-[4px] border-l-[4px] border-r-[4px] border-[#1a1a1a] shadow-[0_-20px_40px_rgba(0,0,0,0.5)] translate-y-8" />
             </div>
          </div>
 
          {/* Feature 3: Marketplace */}
-         <div className="col-span-1 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] p-8 md:p-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500">
+         <div className="col-span-1 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] pt-8 md:pt-12 px-8 md:px-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500 flex flex-col min-h-[30rem]">
             <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
             <div className="absolute -top-32 -right-32 w-96 h-96 bg-purple-500/10 blur-[100px] rounded-full group-hover:bg-purple-500/20 transition-colors duration-700 pointer-events-none" />
             
-            <div className="relative z-10 flex flex-col h-full justify-between">
-              <div className="mb-12">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-purple-500/30 group-hover:bg-purple-500/10 transition-colors duration-500">
-                  <Users className="text-purple-500" size={24} strokeWidth={1.5} />
-                </div>
-                <span className="text-purple-500 font-mono text-xs tracking-widest uppercase mb-4 block">Bidding Logic</span>
-                <h3 className="text-3xl font-display font-bold text-white tracking-tight mb-6">Marketplace</h3>
+            <div className="relative z-10 flex flex-col justify-start">
+              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-purple-500/30 group-hover:bg-purple-500/10 transition-colors duration-500">
+                <Users className="text-purple-500" size={24} strokeWidth={1.5} />
               </div>
-              <p className="text-white/60 leading-relaxed font-light">
-                Homeowners post projects. Contractors receive push notifications, browse listings, and submit competitive bids. Private chat unlocks upon acceptance.
+              <span className="text-purple-500 font-mono text-xs tracking-widest uppercase mb-4 block">Bidding Logic</span>
+              <h3 className="text-3xl font-display font-bold text-white tracking-tight mb-4">Marketplace</h3>
+              <p className="text-white/60 leading-relaxed font-light mb-8">
+                Contractors receive push notifications, browse listings, and submit competitive bids.
               </p>
+            </div>
+
+            {/* Embedded UI */}
+            <div className="relative z-10 flex-1 flex justify-center items-end mt-4 transition-transform duration-700 group-hover:-translate-y-2">
+               {/* eslint-disable-next-line @next/next/no-img-element */}
+               <img src="/housemate/10_Bidding_Project_Details.jpeg" alt="Marketplace UI" className="w-[70%] h-auto object-cover rounded-tl-3xl rounded-tr-3xl border-t-[4px] border-l-[4px] border-r-[4px] border-[#1a1a1a] shadow-[0_-20px_40px_rgba(0,0,0,0.5)] translate-y-8" />
             </div>
          </div>
 
          {/* Feature 4: Real-Time Sync */}
-         <div className="col-span-1 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] p-8 md:p-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500">
+         <div className="col-span-1 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] pt-8 md:pt-12 px-8 md:px-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500 flex flex-col min-h-[30rem]">
             <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
             <div className="absolute -top-32 -right-32 w-96 h-96 bg-orange-500/10 blur-[100px] rounded-full group-hover:bg-orange-500/20 transition-colors duration-700 pointer-events-none" />
             
-            <div className="relative z-10 flex flex-col h-full justify-between">
-              <div className="mb-12">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-orange-500/30 group-hover:bg-orange-500/10 transition-colors duration-500">
-                  <Zap className="text-orange-500" size={24} strokeWidth={1.5} />
-                </div>
-                <span className="text-orange-500 font-mono text-xs tracking-widest uppercase mb-4 block">Infrastructure</span>
-                <h3 className="text-3xl font-display font-bold text-white tracking-tight mb-6">Real-Time Sync</h3>
+            <div className="relative z-10 flex flex-col justify-start">
+              <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-orange-500/30 group-hover:bg-orange-500/10 transition-colors duration-500">
+                <Zap className="text-orange-500" size={24} strokeWidth={1.5} />
               </div>
-              <p className="text-white/60 leading-relaxed font-light">
-                Powered by Firebase Cloud Messaging. New bids, messages, and project alerts are delivered instantly with live unread badges across the platform.
+              <span className="text-orange-500 font-mono text-xs tracking-widest uppercase mb-4 block">Infrastructure</span>
+              <h3 className="text-3xl font-display font-bold text-white tracking-tight mb-4">Real-Time Sync</h3>
+              <p className="text-white/60 leading-relaxed font-light mb-8">
+                FCM push notifications and live chat deliver updates instantly.
               </p>
+            </div>
+
+            {/* Embedded UI */}
+            <div className="relative z-10 flex-1 flex justify-center items-end mt-4 transition-transform duration-700 group-hover:-translate-y-2">
+               {/* eslint-disable-next-line @next/next/no-img-element */}
+               <img src="/housemate/12_Messages_Inbox.jpeg" alt="Chat UI" className="w-[70%] h-auto object-cover rounded-tl-3xl rounded-tr-3xl border-t-[4px] border-l-[4px] border-r-[4px] border-[#1a1a1a] shadow-[0_-20px_40px_rgba(0,0,0,0.5)] translate-y-8" />
             </div>
          </div>
 
-         {/* Feature 5: Web Admin */}
-         <div className="col-span-1 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] p-8 md:p-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500">
+         {/* Feature 5: Web Admin (Full Width Row) */}
+         <div className="col-span-1 lg:col-span-3 bg-gradient-to-br from-white/[0.04] to-transparent border border-white/5 rounded-[2rem] pt-8 md:pt-12 pl-8 md:pl-12 relative overflow-hidden group shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] hover:border-white/10 transition-colors duration-500 flex flex-col md:flex-row gap-8 items-center min-h-[30rem]">
             <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
             <div className="absolute -top-32 -right-32 w-96 h-96 bg-red-500/10 blur-[100px] rounded-full group-hover:bg-red-500/20 transition-colors duration-700 pointer-events-none" />
             
-            <div className="relative z-10 flex flex-col h-full justify-between">
-              <div className="mb-12">
+            <div className="relative z-10 flex flex-col justify-center w-full md:w-1/3 pr-8 md:pr-0 pb-8 md:pb-0">
+              <div className="mb-6">
                 <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] group-hover:border-red-500/30 group-hover:bg-red-500/10 transition-colors duration-500">
                   <LayoutDashboard className="text-red-500" size={24} strokeWidth={1.5} />
                 </div>
                 <span className="text-red-500 font-mono text-xs tracking-widest uppercase mb-4 block">Oversight</span>
-                <h3 className="text-3xl font-display font-bold text-white tracking-tight mb-6">Admin Dashboard</h3>
+                <h3 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight mb-6">Admin Dashboard</h3>
               </div>
-              <p className="text-white/60 leading-relaxed font-light">
+              <p className="text-white/60 leading-relaxed text-lg font-light">
                 A dedicated web panel for platform oversight, handling user management, project analytics, template approvals, and global material pricing control.
               </p>
+            </div>
+
+            {/* Embedded UI */}
+            <div className="relative z-10 w-full md:w-2/3 h-full flex justify-end items-center transition-transform duration-700 group-hover:-translate-x-2">
+               {/* eslint-disable-next-line @next/next/no-img-element */}
+               <img src="/housemate/14_Admin_Dashboard.jpeg" alt="Admin Dashboard UI" className="w-[120%] md:w-full h-auto object-cover rounded-tl-xl border-t-[4px] border-l-[4px] border-[#1a1a1a] shadow-[-20px_20px_60px_rgba(0,0,0,0.5)] translate-x-8 md:translate-x-12 translate-y-8 md:translate-y-12" />
             </div>
          </div>
 
@@ -182,6 +205,11 @@ export function HouseMateCaseStudy() {
          120fps buttery smooth performance, completely native.
          Uses mask-image to create a cinematic edge-fade effect.
       */}
+      <div className="w-full max-w-[100rem] mx-auto px-6 md:px-12 mt-32 mb-8">
+         <span className="text-sm font-mono text-neutral-500 tracking-widest uppercase block">Full Visual Gallery</span>
+         <h3 className="text-3xl font-display font-bold text-white mt-2">All Screens</h3>
+      </div>
+
       <div 
         className="w-full relative"
         style={{ 
