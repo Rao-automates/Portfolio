@@ -80,10 +80,9 @@ export function HouseMateCaseStudy() {
          {/* Feature 1: Map Creator (Text Left, UI Right) */}
          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
             <div className="w-full lg:w-1/2 flex flex-col items-start">
-               <div className="flex items-center gap-4 mb-6">
-                 <span className="text-emerald-500 font-display text-2xl font-bold">01</span>
-                 <div className="h-[1px] w-8 bg-emerald-500/50" />
-                 <span className="text-emerald-500 font-mono text-sm tracking-widest uppercase">Core Engine</span>
+               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+                 <span className="text-white/80 text-xs font-semibold tracking-wide uppercase">Core Engine</span>
                </div>
                <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">2D Map Creator</h3>
                <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
@@ -113,10 +112,9 @@ export function HouseMateCaseStudy() {
                />
             </div>
             <div className="w-full lg:w-1/2 flex flex-col items-start lg:items-end text-left lg:text-right">
-               <div className="flex items-center gap-4 mb-6 flex-row-reverse lg:flex-row">
-                 <span className="text-blue-500 font-mono text-sm tracking-widest uppercase lg:order-3">FastAPI Backend</span>
-                 <div className="h-[1px] w-8 bg-blue-500/50 lg:order-2" />
-                 <span className="text-blue-500 font-display text-2xl font-bold lg:order-1">02</span>
+               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+                 <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
+                 <span className="text-white/80 text-xs font-semibold tracking-wide uppercase">FastAPI Backend</span>
                </div>
                <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">Cost Estimator</h3>
                <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
@@ -128,10 +126,9 @@ export function HouseMateCaseStudy() {
          {/* Feature 3: Marketplace (Text Left, UI Right) */}
          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
             <div className="w-full lg:w-1/2 flex flex-col items-start">
-               <div className="flex items-center gap-4 mb-6">
-                 <span className="text-purple-500 font-display text-2xl font-bold">03</span>
-                 <div className="h-[1px] w-8 bg-purple-500/50" />
-                 <span className="text-purple-500 font-mono text-sm tracking-widest uppercase">Bidding Logic</span>
+               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+                 <div className="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
+                 <span className="text-white/80 text-xs font-semibold tracking-wide uppercase">Bidding Logic</span>
                </div>
                <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">Marketplace</h3>
                <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
@@ -161,10 +158,9 @@ export function HouseMateCaseStudy() {
                />
             </div>
             <div className="w-full lg:w-1/2 flex flex-col items-start lg:items-end text-left lg:text-right">
-               <div className="flex items-center gap-4 mb-6 flex-row-reverse lg:flex-row">
-                 <span className="text-orange-500 font-mono text-sm tracking-widest uppercase lg:order-3">Infrastructure</span>
-                 <div className="h-[1px] w-8 bg-orange-500/50 lg:order-2" />
-                 <span className="text-orange-500 font-display text-2xl font-bold lg:order-1">04</span>
+               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+                 <div className="w-1.5 h-1.5 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
+                 <span className="text-white/80 text-xs font-semibold tracking-wide uppercase">Infrastructure</span>
                </div>
                <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">Real-Time Sync</h3>
                <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
@@ -176,10 +172,9 @@ export function HouseMateCaseStudy() {
          {/* Feature 5: Web Admin (Full Width Cinematic) */}
          <div className="flex flex-col items-center gap-16 pt-24 md:pt-32">
             <div className="flex flex-col items-center text-center max-w-3xl">
-               <div className="flex items-center gap-4 mb-6">
-                 <span className="text-red-500 font-display text-2xl font-bold">05</span>
-                 <div className="h-[1px] w-8 bg-red-500/50" />
-                 <span className="text-red-500 font-mono text-sm tracking-widest uppercase">Oversight</span>
+               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] mb-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+                 <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
+                 <span className="text-white/80 text-xs font-semibold tracking-wide uppercase">Oversight</span>
                </div>
                <h3 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight mb-8">Admin Dashboard</h3>
                <p className="text-white/60 leading-relaxed text-lg md:text-xl font-light">
