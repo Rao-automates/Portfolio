@@ -161,14 +161,14 @@ export function HouseMateCaseStudy() {
                    <img 
                      src={`/housemate/${src}`} 
                      alt={screenName}
-                     className={`h-[60vh] md:h-[75vh] w-auto object-contain bg-black ${rounded} border-[4px] md:border-[8px] border-[#1a1a1a] shadow-[0_30px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_30px_80px_rgba(255,255,255,0.15)] transition-shadow duration-500`}
+                     className={`h-[60vh] md:h-[75vh] w-auto object-cover bg-black ${rounded} ring-1 ring-white/10 border-[4px] md:border-[8px] border-[#1a1a1a] shadow-[0_30px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_30px_80px_rgba(255,255,255,0.15)] transition-all duration-500`}
                      loading="lazy"
                      draggable="false"
                    />
 
                    {/* Sleek Label */}
-                   <div className="absolute -bottom-16 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-xs md:text-sm font-mono text-white uppercase tracking-widest bg-white/5 px-6 py-3 rounded-full border border-white/10 backdrop-blur-md">
+                   <div className="mt-8 md:mt-12 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-xs md:text-sm font-mono text-white uppercase tracking-widest bg-white/5 px-6 py-3 rounded-full border border-white/10 backdrop-blur-md whitespace-nowrap">
                         {screenName}
                       </span>
                    </div>
