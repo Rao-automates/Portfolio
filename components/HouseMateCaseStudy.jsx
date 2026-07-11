@@ -193,6 +193,55 @@ export function HouseMateCaseStudy() {
          </div>
 
       </div>
+
+      {/* FULL VISUAL GALLERY (Horizontal Scroll) */}
+      <div className="w-full max-w-[100rem] mx-auto px-6 md:px-12 mt-16 mb-8">
+         <span className="text-sm font-mono text-neutral-500 tracking-widest uppercase block">Full Visual Gallery</span>
+         <h3 className="text-3xl font-display font-bold text-white mt-2">All Screens</h3>
+      </div>
+
+      <div 
+        className="w-full relative"
+        style={{ 
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+          maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+        }}
+      >
+        <div className="flex overflow-x-auto gap-8 md:gap-24 px-[10vw] pb-32 pt-16 snap-x snap-mandatory hide-scrollbar items-center">
+           
+           {screenshots.map((src, index) => {
+              const isAdmin = src.includes('Admin');
+              const screenName = src.replace('.jpeg', '').replace(/^\d+_/, '').replace(/_/g, ' ');
+              
+              const rounded = isAdmin ? 'rounded-xl' : 'rounded-2xl md:rounded-[1.5rem]';
+
+              return (
+                <div key={index} className="shrink-0 snap-center relative group flex flex-col items-center cursor-grab active:cursor-grabbing">
+                   
+                   {/* eslint-disable-next-line @next/next/no-img-element */}
+                   <img 
+                     src={`/housemate/${src}`} 
+                     alt={screenName}
+                     className={`h-[60vh] md:h-[75vh] w-auto object-cover bg-black ${rounded} ring-1 ring-white/10 border-[2px] md:border-[4px] border-[#1a1a1a] shadow-[0_30px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_30px_80px_rgba(255,255,255,0.15)] transition-all duration-500`}
+                     loading="lazy"
+                     draggable="false"
+                   />
+
+                   <div className="mt-8 md:mt-12 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-xs md:text-sm font-mono text-white uppercase tracking-widest bg-white/5 px-6 py-3 rounded-full border border-white/10 backdrop-blur-md whitespace-nowrap">
+                        {screenName}
+                      </span>
+                   </div>
+
+                </div>
+              )
+           })}
+
+           <div className="shrink-0 w-[5vw]" />
+        </div>
+      </div>
+
+
     </section>
   )
 }
