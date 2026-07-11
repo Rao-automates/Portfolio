@@ -40,7 +40,12 @@ export function HouseMateCaseStudy() {
          No scroll-jacking, perfectly smooth.
       */}
       <div className="px-6 md:px-12 max-w-[100rem] mx-auto mb-16 md:mb-32 flex flex-col items-center">
-         {/* No label, just massive typography */}
+         {/* Architectural Blueprint Label */}
+         <div className="flex items-center gap-6 mb-12 w-full justify-center opacity-80">
+           <span className="text-[10px] md:text-xs font-mono uppercase tracking-[0.3em] text-white/40">Project</span>
+           <div className="w-16 h-[1px] bg-white/20" />
+           <span className="text-[10px] md:text-xs font-mono uppercase tracking-[0.3em] text-white">01 / HouseMate</span>
+         </div>
          <h2 className="text-6xl sm:text-8xl md:text-[8rem] lg:text-[10rem] font-display font-black uppercase text-white leading-none tracking-tighter text-center">
            HouseMate
          </h2>
@@ -48,17 +53,18 @@ export function HouseMateCaseStudy() {
            A comprehensive property management ecosystem. Built with a native Android frontend and a high-performance Python FastAPI backend, secured by JWT authentication, designed to streamline contractor bidding, cost estimation, and user management.
          </p>
 
-         {/* Brutalist Typographic Tech Stack */}
-         <div className="flex flex-col items-center gap-2 mt-12 opacity-70 text-center px-4">
-            <span className="text-white/60 font-display text-lg md:text-xl">
-              <span className="text-white font-medium">Frontend:</span> Android (Kotlin, Canvas API)
-            </span>
-            <span className="text-white/60 font-display text-lg md:text-xl">
-              <span className="text-white font-medium">Backend:</span> FastAPI (Python), FCM
-            </span>
-            <span className="text-white/60 font-display text-lg md:text-xl">
-              <span className="text-white font-medium">Infrastructure:</span> Firebase, SQLite
-            </span>
+         {/* Technical Specification Sheet (Premium Tech Stack) */}
+         <div className="w-full max-w-4xl mt-16 flex flex-col border-t border-white/10">
+            {[
+              { label: "Frontend", value: "Android (Kotlin, Canvas API)" },
+              { label: "Backend", value: "FastAPI (Python), FCM" },
+              { label: "Data & Auth", value: "Firebase, SQLite, JWT" }
+            ].map((spec, i) => (
+              <div key={i} className="flex flex-col md:flex-row md:items-center justify-between py-6 border-b border-white/10 group hover:bg-white/[0.02] transition-colors px-4">
+                <span className="text-xs font-mono uppercase tracking-[0.2em] text-white/40 mb-2 md:mb-0 group-hover:text-white/60 transition-colors">{spec.label}</span>
+                <span className="text-sm md:text-base font-display tracking-wide text-white/80 group-hover:text-white transition-colors">{spec.value}</span>
+              </div>
+            ))}
          </div>
          
          <div className="flex flex-col md:flex-row gap-6 w-full justify-center mt-12">
@@ -204,8 +210,9 @@ export function HouseMateCaseStudy() {
       </div>
 
       {/* FULL VISUAL GALLERY (Horizontal Scroll) */}
-      <div className="w-full max-w-[100rem] mx-auto px-6 md:px-12 mt-16 mb-8 text-center md:text-left">
-         <h3 className="text-3xl font-display font-medium text-white/50">Full Visual Index</h3>
+      <div className="w-full max-w-[100rem] mx-auto px-6 md:px-12 mt-16 mb-8 flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-8">
+         <h3 className="text-3xl font-display font-medium text-white/80">Visual Index</h3>
+         <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40 mt-4 md:mt-0">Fig. 01 — 15</span>
       </div>
 
       <div 
@@ -235,7 +242,12 @@ export function HouseMateCaseStudy() {
                      draggable="false"
                    />
 
-                   {/* Removed text labels completely, letting the images speak for themselves */}
+                   {/* Premium Gallery Placard Label */}
+                   <div className="w-full mt-6 md:mt-8 flex items-center justify-between opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+                     <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white">Fig. {String(index + 1).padStart(2, '0')}</span>
+                     <div className="flex-grow mx-4 h-[1px] bg-white/20" />
+                     <span className="text-xs font-display tracking-widest uppercase text-white/80">{screenName}</span>
+                   </div>
 
                 </div>
               )
