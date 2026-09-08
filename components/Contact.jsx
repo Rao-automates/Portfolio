@@ -4,24 +4,23 @@ import { ArrowUpRight } from 'lucide-react'
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 md:py-32 px-6">
+    <section id="contact" className="py-24 md:py-32 px-6 relative border-t border-white/5">
       <div className="max-w-[1200px] mx-auto">
 
-        <div className="flex items-center gap-4 mb-20 group cursor-default">
-          <span className="text-[#e85d04] font-mono text-lg opacity-50 group-hover:opacity-100 transition-opacity">{'['}</span>
-          <span className="text-sm font-mono text-[#737373] group-hover:text-[#f5f5f0] transition-colors uppercase tracking-widest">Contact</span>
-          <span className="text-[#e85d04] font-mono text-lg opacity-50 group-hover:opacity-100 transition-opacity">{']'}</span>
+        {/* Section Header */}
+        <div className="mb-20">
+          <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">Connect</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
-            <h2 className="text-5xl md:text-7xl font-display font-bold tracking-tight leading-[1]">
-              Let&apos;s build
+            <h2 className="text-4xl md:text-6xl font-display font-medium tracking-tight leading-[1.1] text-white">
+              Got a messy backend?
               <br />
-              something<span className="text-[#e85d04]">.</span>
+              Let&apos;s talk.
             </h2>
-            <p className="text-lg text-[#737373] font-light leading-relaxed mt-8 max-w-md">
-              Whether it&apos;s a native app, a backend system, or an autonomous workflow: I&apos;m ready.
+            <p className="text-lg text-neutral-400 font-light leading-relaxed mt-8 max-w-md">
+              Whether it&apos;s a native application, a robust backend system, or an autonomous workflow pipeline, I am ready to discuss your technical requirements.
             </p>
           </div>
 
@@ -37,19 +36,25 @@ export function Contact() {
                 href={link.href}
                 target={link.href.startsWith('mailto') ? undefined : '_blank'}
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between py-5 border-b border-[rgba(255,255,255,0.06)] hover:border-[#e85d04]/30 transition-colors"
+                className="group flex items-center justify-between py-6 border-b border-white/10 hover:border-white/30 transition-colors"
               >
-                <span className={`text-lg ${link.primary ? 'text-[#f5f5f0] font-medium' : 'text-[#737373] group-hover:text-[#f5f5f0]'} transition-colors`}>{link.label}</span>
-                <ArrowUpRight size={16} className="text-[#555] group-hover:text-[#e85d04] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                <span className={`text-lg md:text-xl ${link.primary ? 'text-white font-medium' : 'text-neutral-400 group-hover:text-white'} transition-colors`}>{link.label}</span>
+                <ArrowUpRight size={18} className="text-neutral-600 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
               </a>
             ))}
           </div>
         </div>
 
         {/* Footer */}
-        <div className="flex flex-col md:flex-row justify-between items-center mt-32 pt-6 border-t border-[rgba(255,255,255,0.04)] text-xs font-mono text-[#444] tracking-wider">
-          <span>© {new Date().getFullYear()} Mohyuddin Rao</span>
-          <span className="mt-3 md:mt-0">Pakistan</span>
+        <div className="flex flex-col md:flex-row justify-between items-center mt-32 pt-8 border-t border-white/5 text-xs font-mono text-neutral-600">
+          <span className="uppercase tracking-widest">© {new Date().getFullYear()} Mohyuddin Rao</span>
+          <span className="mt-4 md:mt-0 text-neutral-500 lowercase">
+            hand-coded with far too much caffeine.
+          </span>
+          <span className="mt-4 md:mt-0 flex items-center gap-2 uppercase tracking-widest">
+            <span className="w-1.5 h-1.5 rounded-full bg-white/50" />
+            Based in Pakistan
+          </span>
         </div>
       </div>
     </section>

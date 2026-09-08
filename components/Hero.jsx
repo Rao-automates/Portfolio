@@ -1,71 +1,63 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center px-6 relative overflow-hidden">
-      <div className="max-w-[1200px] mx-auto w-full">
-        
-        {/* Tagline */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 1, delay: 0.2 }}
-          className="flex items-center gap-3 mb-10"
-        >
-          <div className="w-3 h-3 rounded-full bg-[#e85d04]" />
-          <span className="text-sm text-[#737373]">Developer & Systems Architect</span>
-        </motion.div>
+    <section className="min-h-[90vh] flex flex-col justify-center px-6 relative overflow-hidden">
+      {/* Subtle Grid Background */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-20"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+          backgroundSize: '32px 32px'
+        }}
+      />
+      {/* Radial Gradient for depth */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none" />
 
+      <div className="max-w-[1200px] mx-auto w-full relative z-10 pt-20">
+        
         {/* Main heading */}
-        <div className="mb-12">
-          <div className="overflow-hidden">
-            <motion.h1 
-              initial={{ y: '100%' }} 
-              animate={{ y: 0 }} 
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-              className="font-display font-bold text-[clamp(3rem,12vw,10rem)] leading-[0.85] tracking-tighter"
-            >
-              I build things
-            </motion.h1>
-          </div>
-          <div className="overflow-hidden">
-            <motion.h1 
-              initial={{ y: '100%' }} 
-              animate={{ y: 0 }} 
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.45 }}
-              className="font-display font-bold text-[clamp(3rem,12vw,10rem)] leading-[0.85] tracking-tighter text-[#e85d04]"
-            >
-              that work.
-            </motion.h1>
-          </div>
+        <div className="mb-8">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white mb-2"
+          >
+            Mohyuddin Rao
+          </motion.h1>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="text-3xl md:text-5xl lg:text-6xl font-display font-medium tracking-tight text-neutral-500"
+          >
+            Backend & Automation Engineer
+          </motion.h2>
         </div>
 
         {/* Sub text + CTA */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }} 
           animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 1, delay: 0.8 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-8 max-w-[1200px]"
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-8 max-w-[1200px] mt-12 border-t border-white/10 pt-8"
         >
-          <p className="text-lg text-[#737373] font-light max-w-md leading-relaxed">
-            Automation systems, native Android apps, and high-performance backends, from idea to production.
+          <p className="text-base md:text-lg text-neutral-400 font-light max-w-xl leading-relaxed">
+            I build robust APIs, native Android apps, and autonomous workflows. I care deeply about clean code, un-messy databases, and backends that don't page me at 3 AM.
           </p>
           <a 
             href="#work" 
-            className="group inline-flex items-center gap-3 text-sm font-medium text-[#f5f5f0] border-b border-[#f5f5f0]/20 pb-2 hover:border-[#e85d04] hover:text-[#e85d04] transition-colors"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-white hover:text-neutral-300 transition-colors bg-white/5 hover:bg-white/10 px-5 py-2.5 rounded-lg border border-white/10"
           >
-            See my work
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-y-0.5 transition-transform">
-              <path d="M7 1V13M7 13L1 7M7 13L13 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" transform="rotate(180 7 7)"/>
-            </svg>
+            View Projects
+            <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
           </a>
         </motion.div>
       </div>
-
-      {/* Background elements */}
-      <div className="absolute top-[10%] right-[-5%] w-[500px] h-[500px] bg-[#e85d04]/[0.04] rounded-full blur-[150px] pointer-events-none" />
     </section>
   )
 }

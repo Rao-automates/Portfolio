@@ -1,8 +1,8 @@
 import './globals.css'
-import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
+import { Space_Mono, Playfair_Display, JetBrains_Mono } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-display' })
+const spaceMono = Space_Mono({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-inter' })
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-display' })
 const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
 export const metadata = {
@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}>
+    <html lang="en" className={`${spaceMono.variable} ${playfair.variable} ${jetBrainsMono.variable}`}>
       <body>{children}</body>
     </html>
   )
