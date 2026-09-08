@@ -16,10 +16,10 @@ const caseStudies = [
       { label: 'Live Website', url: 'https://kaaj-official-store.vercel.app/' },
     ],
     features: [
-      { title: 'Custom Frontend Architecture', desc: 'React-based UI decoupled from the backend for improved performance and bespoke interactions.', img: '/kaaj/kaaj-3.png' },
-      { title: 'WooCommerce Integration', desc: 'Full synchronization of product catalogs, dynamic pricing, and checkout flows via REST APIs.', img: '/kaaj/kaaj-4.png' },
-      { title: 'Event-Driven Webhooks', desc: 'Automated post-purchase workflows, including branded receipts and custom return portals triggered by webhooks.', img: '/kaaj/kaaj-5.png' },
-      { title: 'Automated Asset Pipeline', desc: 'Python microservices for automated editorial image processing, handling contrast and rotation dynamically.', img: '/kaaj/kaaj-1.png' },
+      { title: 'Decoupled React UI', desc: 'I stripped away WooCommerce\'s heavy default PHP templates and built a completely decoupled React UI. It runs blazing fast and actually feels like a modern app instead of a sluggish 2015 storefront.', img: '/kaaj/kaaj-3.png' },
+      { title: 'The WooCommerce Brain', desc: 'Syncing catalogs, pricing, and checkouts through REST APIs. The client gets to keep their familiar WordPress backend, while users get a seamless, native-like checkout flow.', img: '/kaaj/kaaj-4.png' },
+      { title: 'Event-Driven Webhooks', desc: 'No one likes waiting for manual updates. I set up automated post-purchase webhooks that instantly trigger branded receipts and spin up custom return portals without human intervention.', img: '/kaaj/kaaj-5.png' },
+      { title: 'Automated Asset Pipeline', desc: 'My favorite part of the build: a Python microservice that intercepts uploaded editorial images, automatically fixes their contrast and rotation, and spits out perfectly optimized web assets.', img: '/kaaj/kaaj-1.png' },
     ],
     gallery: [
       'kaaj-1.png', 'kaaj-2.png', 'kaaj-3.png', 'kaaj-4.png', 'kaaj-5.png'
@@ -39,10 +39,10 @@ const caseStudies = [
       { label: 'Backend Repo', url: 'https://github.com/Rao-automates/HouseMate-Api-Backend' },
     ],
     features: [
-      { title: '2D Map Engine', desc: 'Custom Android Canvas implementation allowing users to draw floor plans with real-time compliance overlays.', img: '/housemate/03_Map_Creator.jpeg' },
-      { title: 'Cost Estimator Module', desc: 'Algorithmic calculation of material Bill of Quantities (BOQ) based on user-defined floor plans and budget tiers.', img: '/housemate/05_Cost_Estimator.jpeg' },
-      { title: 'Real-Time Marketplace', desc: 'Integrated bidding system with real-time chat and push notifications via Firebase Cloud Messaging.', img: '/housemate/10_Bidding_Project_Details.jpeg' },
-      { title: 'Admin Control Panel', desc: 'Web interface for centralized user management, analytics, and global parameter configuration.', img: '/housemate/14_Admin_Dashboard.jpeg' },
+      { title: 'Raw 2D Map Engine', desc: 'I pushed Android Canvas to its absolute limit. Users physically draw their floor plans on their screens while real-time compliance overlays warn them if they break structural rules.', img: '/housemate/03_Map_Creator.jpeg' },
+      { title: 'Instant BOQ Estimator', desc: 'Instead of waiting days for a quote, a custom algorithm parses the user\'s drawn floor plan, checks their budget tier, and instantly spits out a highly accurate material Bill of Quantities.', img: '/housemate/05_Cost_Estimator.jpeg' },
+      { title: 'Real-Time Bidding', desc: 'I wired up Firebase Cloud Messaging to create a live bidding arena. Contractors and homeowners can haggle in real-time chat with instant, reliable push notifications.', img: '/housemate/10_Bidding_Project_Details.jpeg' },
+      { title: 'God-Mode Admin Panel', desc: 'A no-nonsense web dashboard that gives the operations team complete control over user management, platform analytics, and global app configurations.', img: '/housemate/14_Admin_Dashboard.jpeg' },
     ],
     gallery: [
       '01_Welcome_Screen.jpeg', '02_Client_Dashboard.jpeg', '03_Map_Creator.jpeg',
