@@ -66,7 +66,6 @@ const caseStudies = [
     ],
     screenshots: [
       '/linkedin-automation/workflow-overview.png',
-      '/linkedin-automation/workflow-detail.png',
     ],
     isAutomation: true
   }
@@ -171,6 +170,21 @@ export function Work() {
             )}
 
 
+
+            {study.isAutomation && (
+              <div className="flex flex-col gap-8">
+                {study.screenshots?.map((src, k) => (
+                  <motion.div 
+                    key={k}
+                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: k * 0.1 }}
+                    className="rounded-xl overflow-hidden border border-white/10 bg-white/[0.02] p-2 md:p-4 flex justify-center"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={src} alt={`Workflow Architecture ${k + 1}`} className="w-full max-h-[70vh] object-contain rounded" loading="lazy" />
+                  </motion.div>
+                ))}
+              </div>
+            )}
 
             {study.id !== 'linkedin' && <div className="w-full h-px bg-white/10 mt-32 md:mt-48" />}
           </div>
